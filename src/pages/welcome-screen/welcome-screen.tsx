@@ -20,6 +20,44 @@ type GetSrcFilmBgImageProps = {
     name: string;
 }
 
+function GetSrcFilmImage({ name }: GetSrcFilmImageProps): string {
+    return (
+        'img/' +
+        name.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/ /gi, '-')
+        + '.jpg'
+
+    )
+}
+
+function GetSrcFilmPoster({ name }: GetSrcFilmPosterProps): string {
+    return (
+        'img/' +
+        name.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/ /gi, '-')
+        + '-poster.jpg'
+    )
+}
+
+function GetSrcFilmBgImage({ name }: GetSrcFilmBgImageProps): string {
+    return (
+        'img/bg-' +
+        name.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/ /gi, '-')
+        + '.jpg'
+    )
+}
+
+function SmallFilmCard({ name }: SmallFilmCardProps): JSX.Element {
+    return (
+        <article className="small-film-card catalog__films-card">
+            <div className="small-film-card__image">
+                <img src={GetSrcFilmImage({ name })} alt={name} width="280" height="175" />
+            </div>
+            <h3 className="small-film-card__title">
+                <a className="small-film-card__link" href="film-page.html">{name}</a>
+            </h3>
+        </article>
+    )
+}
+
 function WelcomeScreen(props: WelcomeScreenProps): JSX.Element {
     return (
         <>
@@ -181,45 +219,6 @@ function WelcomeScreen(props: WelcomeScreenProps): JSX.Element {
             </div>
         </>
     );
-}
-
-function SmallFilmCard({ name }: SmallFilmCardProps): JSX.Element {
-    return (
-        <article className="small-film-card catalog__films-card">
-            <div className="small-film-card__image">
-                <img src={GetSrcFilmImage({ name })} alt={name} width="280" height="175" />
-            </div>
-            <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">{name}</a>
-            </h3>
-        </article>
-    )
-}
-
-function GetSrcFilmImage({ name }: GetSrcFilmImageProps): string {
-    return (
-        'img/' +
-        name.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/ /gi, '-')
-        + '.jpg'
-
-    )
-}
-
-function GetSrcFilmPoster({ name }: GetSrcFilmPosterProps): string {
-    return (
-        'img/' +
-        name.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/ /gi, '-')
-        + '-poster.jpg'
-    )
-}
-
-
-function GetSrcFilmBgImage({ name }: GetSrcFilmBgImageProps): string {
-    return (
-        'img/bg-' +
-        name.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/ /gi, '-')
-        + '.jpg'
-    )
 }
 
 export default WelcomeScreen;
