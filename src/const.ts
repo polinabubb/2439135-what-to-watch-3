@@ -1,5 +1,5 @@
 export const Setting = {
-    Name: 'Какой-то фильм',
-    Genre: 'Какой-то жанр',
+    Name: 'The Grand Budapest Hotel',
+    Genre: 'Dramaaaaa',
     ReleaseDate: '2014'
   };
