@@ -1,6 +1,6 @@
-function AddReviewScreen(): JSX.Element {
-    return (
-<section className="film-card">
+function HeadGuestScreen(): JSX.Element {
+  return (
+    <section className="film-card">
       <div className="film-card__bg">
         <img src="img/bg-header.jpg" />
       </div>
@@ -22,7 +22,7 @@ function AddReviewScreen(): JSX.Element {
       </header>
 
     </section>
-    );
+  );
 }
 
-export default AddReviewScreen;
+export default HeadGuestScreen;
