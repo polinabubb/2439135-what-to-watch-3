@@ -1,4 +1,4 @@
-function SignInErrorScreen(): JSX.Element {
+function SignInErrorPage(): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -75,4 +75,4 @@ function SignInErrorScreen(): JSX.Element {
   );
 }
 
-export default SignInErrorScreen;
+export default SignInErrorPage;

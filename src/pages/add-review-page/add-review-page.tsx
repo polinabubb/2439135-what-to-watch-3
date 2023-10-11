@@ -1,6 +1,13 @@
-function AddReviewScreen(): JSX.Element {
+import {Helmet} from 'react-helmet-async';
+import {Link} from 'react-router-dom';
+import { AppRoute } from '../../const';
+
+function AddReviewPage(): JSX.Element {
   return (
     <section className="film-card film-card--full">
+      <Helmet>
+        <title>Карточка фильма</title>
+      </Helmet>
       <div className="film-card__header">
         <div className="film-card__bg">
           <img
@@ -13,19 +20,19 @@ function AddReviewScreen(): JSX.Element {
 
         <header className="page-header">
           <div className="logo">
-            <a href="main.html" className="logo__link">
+            <Link to="/" className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+              </Link>
           </div>
 
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">
+                <Link to={AppRoute.Film} className="readcrumbs__link">
                   The Grand Budapest Hotel
-                </a>
+                  </Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -197,4 +204,4 @@ function AddReviewScreen(): JSX.Element {
   );
 }
 
-export default AddReviewScreen;
+export default AddReviewPage;
