@@ -1,4 +1,7 @@
-function MoviePageDetailsScreen(): JSX.Element {
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+
+function MoviePageDetails(): JSX.Element {
   return (
     <>
       <section className="film-card film-card--full">
@@ -14,11 +17,11 @@ function MoviePageDetailsScreen(): JSX.Element {
 
           <header className="page-header film-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to={AppRoute.Main} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <ul className="user-block">
@@ -66,9 +69,10 @@ function MoviePageDetailsScreen(): JSX.Element {
                   <span>My list</span>
                   <span className="film-card__count">9</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">
+
+                <Link to={AppRoute.AddReview} className="btn film-card__button">
                   Add review
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -176,9 +180,9 @@ function MoviePageDetailsScreen(): JSX.Element {
                 />
               </div>
               <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">
+                <Link to={AppRoute.Film} className="small-film-card__link">
                   Fantastic Beasts: The Crimes of Grindelwald
-                </a>
+                </Link>
               </h3>
             </article>
 
@@ -192,9 +196,9 @@ function MoviePageDetailsScreen(): JSX.Element {
                 />
               </div>
               <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">
+                <Link to={AppRoute.Film} className="small-film-card__link">
                   Bohemian Rhapsody
-                </a>
+                </Link>
               </h3>
             </article>
 
@@ -208,9 +212,9 @@ function MoviePageDetailsScreen(): JSX.Element {
                 />
               </div>
               <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">
+                <Link to={AppRoute.Film} className="small-film-card__link">
                   Macbeth
-                </a>
+                </Link>
               </h3>
             </article>
 
@@ -224,9 +228,9 @@ function MoviePageDetailsScreen(): JSX.Element {
                 />
               </div>
               <h3 className="small-film-card__title">
-                <a className="small-film-card__link" href="film-page.html">
+                <Link to={AppRoute.Film} className="small-film-card__link">
                   Aviator
-                </a>
+                </Link>
               </h3>
             </article>
           </div>
@@ -234,11 +238,11 @@ function MoviePageDetailsScreen(): JSX.Element {
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
+            <Link to={AppRoute.Main} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -250,4 +254,4 @@ function MoviePageDetailsScreen(): JSX.Element {
   );
 }
 
-export default MoviePageDetailsScreen;
+export default MoviePageDetails;
