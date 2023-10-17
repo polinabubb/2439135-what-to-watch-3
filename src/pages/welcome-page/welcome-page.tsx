@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+
 type WelcomeScreenProps = {
   name: string;
   genre: string;
@@ -21,23 +24,20 @@ type GetSrcFilmBgImageProps = {
 };
 
 function GetSrcFilmImage({ name }: GetSrcFilmImageProps): string {
-  return `img/${name
-    .toLowerCase()
-    .replace(':','')
-    .replace(/ /gi, '-')}.jpg`;
+  return `img/${name.toLowerCase().replace(':', '').replace(/ /gi, '-')}.jpg`;
 }
 
 function GetSrcFilmPoster({ name }: GetSrcFilmPosterProps): string {
   return `img/${name
     .toLowerCase()
-    .replace(':','')
+    .replace(':', '')
     .replace(/ /gi, '-')}-poster.jpg`;
 }
 
 function GetSrcFilmBgImage({ name }: GetSrcFilmBgImageProps): string {
   return `img/bg-${name
     .toLowerCase()
-    .replace(':','')
+    .replace(':', '')
     .replace(/ /gi, '-')}.jpg`;
 }
 
@@ -53,9 +53,9 @@ function SmallFilmCard({ name }: SmallFilmCardProps): JSX.Element {
         />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">
+        <Link to={AppRoute.Film} className="small-film-card__link">
           {name}
-        </a>
+        </Link>
       </h3>
     </article>
   );

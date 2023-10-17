@@ -1,13 +1,16 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+
 function MyListScreen(): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
-          <a href="main.html" className="logo__link">
+          <Link to={AppRoute.Main} className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          </Link>
         </div>
 
         <h1 className="page-title user-page__title">
@@ -44,9 +47,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 Fantastic Beasts: The Crimes of Grindelwald
-              </a>
+              </Link>
             </h3>
           </article>
 
@@ -60,9 +63,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 Bohemian Rhapsody
-              </a>
+              </Link>
             </h3>
           </article>
 
@@ -76,9 +79,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 Macbeth
-              </a>
+              </Link>
             </h3>
           </article>
 
@@ -92,9 +95,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 Aviator
-              </a>
+              </Link>
             </h3>
           </article>
 
@@ -108,9 +111,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 We need to talk about Kevin
-              </a>
+              </Link>
             </h3>
           </article>
 
@@ -124,9 +127,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 What We Do in the Shadows
-              </a>
+              </Link>
             </h3>
           </article>
 
@@ -140,9 +143,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 Revenant
-              </a>
+              </Link>
             </h3>
           </article>
 
@@ -156,9 +159,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 Johnny English
-              </a>
+              </Link>
             </h3>
           </article>
 
@@ -172,9 +175,9 @@ function MyListScreen(): JSX.Element {
               />
             </div>
             <h3 className="small-film-card__title">
-              <a className="small-film-card__link" href="film-page.html">
+              <Link to={AppRoute.Film} className="small-film-card__link">
                 Shutter Island
-              </a>
+              </Link>
             </h3>
           </article>
         </div>
@@ -182,11 +185,11 @@ function MyListScreen(): JSX.Element {
 
       <footer className="page-footer">
         <div className="logo">
-          <a href="main.html" className="logo__link logo__link--light">
+          <Link to={AppRoute.Main} className="logo__link logo__link--light">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          </Link>
         </div>
 
         <div className="copyright">

@@ -1,5 +1,5 @@
-import {Helmet} from 'react-helmet-async';
-import {Link} from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
 function AddReviewPage(): JSX.Element {
@@ -24,7 +24,7 @@ function AddReviewPage(): JSX.Element {
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-              </Link>
+            </Link>
           </div>
 
           <nav className="breadcrumbs">
@@ -32,7 +32,7 @@ function AddReviewPage(): JSX.Element {
               <li className="breadcrumbs__item">
                 <Link to={AppRoute.Film} className="readcrumbs__link">
                   The Grand Budapest Hotel
-                  </Link>
+                </Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -190,8 +190,7 @@ function AddReviewPage(): JSX.Element {
               name="review-text"
               id="review-text"
               placeholder="Review text"
-            >
-            </textarea>
+            ></textarea>
             <div className="add-review__submit">
               <button className="add-review__btn" type="submit">
                 Post
