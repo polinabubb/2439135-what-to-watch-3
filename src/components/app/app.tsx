@@ -1,4 +1,4 @@
-import WelcomeScreen from '../../pages/welcome-page/welcome-page';
+import WelcomePage from '../../pages/welcome-page/welcome-page';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
@@ -9,11 +9,11 @@ import AddReviewPage from '../../pages/add-review-page/add-review-page';
 import PlayerPage from '../../pages/player-pages/player-page/player-page';
 import NotFoundScreen from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
+import { Film, Films } from '../../types/films';
 
 type AppProps = {
-  name: string;
-  genre: string;
-  releaseDate: string;
+  mainFilm: Film;
+  films: Films;
 };
 
 function App(props: AppProps): JSX.Element {
@@ -21,7 +21,7 @@ function App(props: AppProps): JSX.Element {
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={AppRoute.Main} element={<WelcomeScreen {...props} />} />
+          <Route path={AppRoute.Main} element={<WelcomePage {...props} />} />
           <Route path={AppRoute.SignIn} element={<SignInPage />} />
           <Route
             path={AppRoute.MyList}
