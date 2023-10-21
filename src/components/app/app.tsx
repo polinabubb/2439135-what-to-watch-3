@@ -10,6 +10,8 @@ import PlayerPage from '../../pages/player-pages/player-page/player-page';
 import NotFoundScreen from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { Film, Films } from '../../types/films';
+import { FIRST_MAIN_FILM, films, VIDEO_URL } from '../../mocks/films';
+import { filmRatings } from '../../mocks/reviews';
 
 type AppProps = {
   mainFilm: Film;
@@ -27,13 +29,28 @@ function App(props: AppProps): JSX.Element {
             path={AppRoute.MyList}
             element={
               <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                <MyListPage />
+                <MyListPage mainFilm={FIRST_MAIN_FILM} films={films} />
               </PrivateRoute>
             }
           />
-          <Route path={AppRoute.Film} element={<MoviePage />} />
-          <Route path={AppRoute.AddReview} element={<AddReviewPage />} />
-          <Route path={AppRoute.Player} element={<PlayerPage />} />
+          <Route
+            path={AppRoute.Film}
+            element={
+              <MoviePage
+                rayting={filmRatings[FIRST_MAIN_FILM.id-1]}
+                mainFilm={FIRST_MAIN_FILM}
+                moreFilms={films}
+              />
+            }
+          />
+          <Route
+            path={AppRoute.AddReview}
+            element={<AddReviewPage film={FIRST_MAIN_FILM} />}
+          />
+          <Route
+            path={AppRoute.Player}
+            element={<PlayerPage videoUrl={VIDEO_URL} />}
+          />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../const';
 
-function SignInScreen(): JSX.Element {
+function SignInPage(): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -75,4 +75,4 @@ function SignInScreen(): JSX.Element {
   );
 }
 
-export default SignInScreen;
+export default SignInPage;

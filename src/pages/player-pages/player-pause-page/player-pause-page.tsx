@@ -1,4 +1,4 @@
-function PlayerPauseScreen(): JSX.Element {
+function PlayerPausePage(): JSX.Element {
   return (
     <div className="player">
       <video
@@ -47,4 +47,4 @@ function PlayerPauseScreen(): JSX.Element {
   );
 }
 
-export default PlayerPauseScreen;
+export default PlayerPausePage;

@@ -1,8 +1,11 @@
-function PlayerScreen(): JSX.Element {
+type PlayerPageProps = {
+  videoUrl: string;
+}
+function PlayerPage({videoUrl}:PlayerPageProps): JSX.Element {
   return (
     <div className="player">
       <video
-        src="#"
+        src={videoUrl}
         className="player__video"
         poster="img/player-poster.jpg"
       ></video>
@@ -47,4 +50,4 @@ function PlayerScreen(): JSX.Element {
   );
 }
 
-export default PlayerScreen;
+export default PlayerPage;
