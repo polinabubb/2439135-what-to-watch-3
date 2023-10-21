@@ -1,72 +1,31 @@
-import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { FilmCards } from '../../components/film-cards/film-cards';
+import { Film, Films } from '../../types/films';
 
-type WelcomeScreenProps = {
-  name: string;
-  genre: string;
-  releaseDate: string;
+type WelcomePageProps = {
+  mainFilm: Film;
+  films: Films;
 };
 
-type SmallFilmCardProps = {
-  name: string;
-};
-
-type GetSrcFilmImageProps = {
-  name: string;
-};
-
-type GetSrcFilmPosterProps = {
-  name: string;
-};
-
-type GetSrcFilmBgImageProps = {
-  name: string;
-};
-
-function GetSrcFilmImage({ name }: GetSrcFilmImageProps): string {
-  return `img/${name.toLowerCase().replace(':', '').replace(/ /gi, '-')}.jpg`;
-}
-
-function GetSrcFilmPoster({ name }: GetSrcFilmPosterProps): string {
+function GetSrcFilmPoster(name: string): string {
   return `img/${name
     .toLowerCase()
     .replace(':', '')
     .replace(/ /gi, '-')}-poster.jpg`;
 }
 
-function GetSrcFilmBgImage({ name }: GetSrcFilmBgImageProps): string {
+function GetSrcFilmBgImage(name: string): string {
   return `img/bg-${name
     .toLowerCase()
     .replace(':', '')
     .replace(/ /gi, '-')}.jpg`;
 }
 
-function SmallFilmCard({ name }: SmallFilmCardProps): JSX.Element {
-  return (
-    <article className="small-film-card catalog__films-card">
-      <div className="small-film-card__image">
-        <img
-          src={GetSrcFilmImage({ name })}
-          alt={name}
-          width="280"
-          height="175"
-        />
-      </div>
-      <h3 className="small-film-card__title">
-        <Link to={AppRoute.Film} className="small-film-card__link">
-          {name}
-        </Link>
-      </h3>
-    </article>
-  );
-}
-
-function WelcomeScreen(props: WelcomeScreenProps): JSX.Element {
+function WelcomePage({ mainFilm, films }: WelcomePageProps): JSX.Element {
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={GetSrcFilmBgImage({ name: props.name })} alt={props.name} />
+          <img src={GetSrcFilmBgImage(mainFilm.title)} alt={mainFilm.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -101,18 +60,18 @@ function WelcomeScreen(props: WelcomeScreenProps): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster">
               <img
-                src={GetSrcFilmPoster({ name: props.name })}
-                alt={`${props.name} poster`}
+                src={GetSrcFilmPoster(mainFilm.title)}
+                alt={`${mainFilm.title} poster`}
                 width="218"
                 height="327"
               />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.name}</h2>
+              <h2 className="film-card__title">{mainFilm.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.releaseDate}</span>
+                <span className="film-card__genre">{mainFilm.title}</span>
+                <span className="film-card__year">{mainFilm.year}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -197,45 +156,7 @@ function WelcomeScreen(props: WelcomeScreenProps): JSX.Element {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            <SmallFilmCard name="Fantastic Beasts: The Crimes of Grindelwald" />
-
-            <SmallFilmCard name="Bohemian Rhapsody" />
-
-            <SmallFilmCard name="Macbeth" />
-
-            <SmallFilmCard name="We need to talk about Kevin" />
-
-            <SmallFilmCard name="What We Do in the Shadows" />
-
-            <SmallFilmCard name="Revenant" />
-
-            <SmallFilmCard name="Johnny English" />
-
-            <SmallFilmCard name="Shutter Island" />
-
-            <SmallFilmCard name="Pulp Fiction" />
-
-            <SmallFilmCard name="No Country for Old Men" />
-
-            <SmallFilmCard name="Snatch" />
-
-            <SmallFilmCard name="Moonrise Kingdom" />
-
-            <SmallFilmCard name="Seven Years in Tibet" />
-
-            <SmallFilmCard name="Midnight Special" />
-
-            <SmallFilmCard name="War of the Worlds" />
-
-            <SmallFilmCard name="Dardjeeling Limited" />
-
-            <SmallFilmCard name="Orlando" />
-
-            <SmallFilmCard name="Mindhunter" />
-
-            <SmallFilmCard name="Midnight Special" />
-          </div>
+          <FilmCards mainFilmId={mainFilm.id} films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">
@@ -262,4 +183,4 @@ function WelcomeScreen(props: WelcomeScreenProps): JSX.Element {
   );
 }
 
-export default WelcomeScreen;
+export default WelcomePage;

@@ -1,7 +1,18 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../const';
-
-function MoviePageScreen(): JSX.Element {
+import { FilmCards } from '../../../components/film-cards/film-cards';
+import { Film, Films } from '../../../types/films';
+import { FilmRating } from '../../../types/films';
+type MoviePageProps = {
+  rayting: FilmRating;
+  mainFilm: Film;
+  moreFilms: Films;
+};
+function MoviePage({
+  rayting,
+  mainFilm,
+  moreFilms,
+}: MoviePageProps): JSX.Element {
   return (
     <>
       <section className="film-card film-card--full">
@@ -43,10 +54,10 @@ function MoviePageScreen(): JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="film-card__title">{mainFilm.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">Drama</span>
-                <span className="film-card__year">2014</span>
+                <span className="film-card__genre">{mainFilm.genre}</span>
+                <span className="film-card__year">{mainFilm.year}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -110,10 +121,12 @@ function MoviePageScreen(): JSX.Element {
               </nav>
 
               <div className="film-rating">
-                <div className="film-rating__score">8,9</div>
+                <div className="film-rating__score">{rayting.score}</div>
                 <p className="film-rating__meta">
-                  <span className="film-rating__level">Very good</span>
-                  <span className="film-rating__count">240 ratings</span>
+                  <span className="film-rating__level">{rayting.level}</span>
+                  <span className="film-rating__count">
+                    {rayting.count} ratings
+                  </span>
                 </p>
               </div>
 
@@ -135,14 +148,11 @@ function MoviePageScreen(): JSX.Element {
                 </p>
 
                 <p className="film-card__director">
-                  <strong>Director: Wes Anderson</strong>
+                  <strong>Director: {mainFilm.director}</strong>
                 </p>
 
                 <p className="film-card__starring">
-                  <strong>
-                    Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe
-                    and other
-                  </strong>
+                  <strong>Starring: {mainFilm.starring}</strong>
                 </p>
               </div>
             </div>
@@ -154,71 +164,7 @@ function MoviePageScreen(): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__films-list">
-            <article className="small-film-card catalog__films-card">
-              <div className="small-film-card__image">
-                <img
-                  src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                  alt="Fantastic Beasts: The Crimes of Grindelwald"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-film-card__title">
-                <Link to={AppRoute.Film} className="small-film-card__link">
-                  Fantastic Beasts: The Crimes of Grindelwald
-                </Link>
-              </h3>
-            </article>
-
-            <article className="small-film-card catalog__films-card">
-              <div className="small-film-card__image">
-                <img
-                  src="img/bohemian-rhapsody.jpg"
-                  alt="Bohemian Rhapsody"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-film-card__title">
-                <Link to={AppRoute.Film} className="small-film-card__link">
-                  Bohemian Rhapsody
-                </Link>
-              </h3>
-            </article>
-
-            <article className="small-film-card catalog__films-card">
-              <div className="small-film-card__image">
-                <img
-                  src="img/macbeth.jpg"
-                  alt="Macbeth"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-film-card__title">
-                <Link to={AppRoute.Film} className="small-film-card__link">
-                  Macbeth
-                </Link>
-              </h3>
-            </article>
-
-            <article className="small-film-card catalog__films-card">
-              <div className="small-film-card__image">
-                <img
-                  src="img/aviator.jpg"
-                  alt="Aviator"
-                  width="280"
-                  height="175"
-                />
-              </div>
-              <h3 className="small-film-card__title">
-                <Link to={AppRoute.Film} className="small-film-card__link">
-                  Aviator
-                </Link>
-              </h3>
-            </article>
-          </div>
+          <FilmCards mainFilmId={mainFilm.id} films={moreFilms} />
         </section>
 
         <footer className="page-footer">
@@ -239,4 +185,4 @@ function MoviePageScreen(): JSX.Element {
   );
 }
 
-export default MoviePageScreen;
+export default MoviePage;

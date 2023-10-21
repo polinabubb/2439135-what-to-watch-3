@@ -1,11 +1,15 @@
-function PlayerScreen(): JSX.Element {
+type PlayerPageProps = {
+  videoUrl: string;
+}
+function PlayerPage({videoUrl}:PlayerPageProps): JSX.Element {
   return (
     <div className="player">
       <video
-        src="#"
+        src={videoUrl}
         className="player__video"
         poster="img/player-poster.jpg"
-      ></video>
+      >
+      </video>
 
       <button type="button" className="player__exit">
         Exit
@@ -18,7 +22,8 @@ function PlayerScreen(): JSX.Element {
               className="player__progress"
               value="30"
               max="100"
-            ></progress>
+            >
+            </progress>
             <div className="player__toggler" style={{ left: '30%' }}>
               Toggler
             </div>
@@ -47,4 +52,4 @@ function PlayerScreen(): JSX.Element {
   );
 }
 
-export default PlayerScreen;
+export default PlayerPage;

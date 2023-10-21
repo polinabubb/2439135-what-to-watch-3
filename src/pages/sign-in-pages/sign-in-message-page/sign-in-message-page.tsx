@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../const';
 
-function SignInMessageScreen(): JSX.Element {
+function SignInMessagePage(): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -81,4 +81,4 @@ function SignInMessageScreen(): JSX.Element {
   );
 }
 
-export default SignInMessageScreen;
+export default SignInMessagePage;

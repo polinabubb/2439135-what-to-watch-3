@@ -1,11 +1,12 @@
-function PlayerPauseScreen(): JSX.Element {
+function PlayerPausePage(): JSX.Element {
   return (
     <div className="player">
       <video
         src="#"
         className="player__video"
         poster="img/player-poster.jpg"
-      ></video>
+      >
+      </video>
 
       <button type="button" className="player__exit">
         Exit
@@ -18,7 +19,8 @@ function PlayerPauseScreen(): JSX.Element {
               className="player__progress"
               value="30"
               max="100"
-            ></progress>
+            >
+            </progress>
             <div className="player__toggler" style={{ left: '30%' }}>
               Toggler
             </div>
@@ -47,4 +49,4 @@ function PlayerPauseScreen(): JSX.Element {
   );
 }
 
-export default PlayerPauseScreen;
+export default PlayerPausePage;
