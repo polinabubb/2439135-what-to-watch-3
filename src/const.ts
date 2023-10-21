@@ -33,6 +33,7 @@ export const Genres = {
 
 //export const FIRST_MAIN_FILM = films;
 export const FIRST_MAIN_FILM = {
+  id: 1,
   genre: Genres.Drama,
   year: '2014',
   title: 'The Grand Budapest Hotel',

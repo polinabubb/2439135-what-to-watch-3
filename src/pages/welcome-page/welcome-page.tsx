@@ -60,7 +60,7 @@ function WelcomePage({ mainFilm, films }: WelcomePageProps): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster">
               <img
-                src={GetSrcFilmPoster(mainFilm.text)}
+                src={GetSrcFilmPoster(mainFilm.title)}
                 alt={`${mainFilm.title} poster`}
                 width="218"
                 height="327"
@@ -156,7 +156,7 @@ function WelcomePage({ mainFilm, films }: WelcomePageProps): JSX.Element {
             </li>
           </ul>
 
-          <FilmCards films={films} />
+          <FilmCards mainFilmId={mainFilm.id} films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">

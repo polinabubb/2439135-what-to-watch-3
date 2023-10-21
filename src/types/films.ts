@@ -1,6 +1,7 @@
 
 
 export type Film = {
+  id: number;
   genre: string;
   year: string;
   title: string;
@@ -10,9 +11,9 @@ export type Film = {
 };
 
 export type FilmRating = {
-  score: Number;
+  score: number;
   level: string;
-  count: Number;
+  count: number;
 };
 
 export type FilmRatings = FilmRating[];

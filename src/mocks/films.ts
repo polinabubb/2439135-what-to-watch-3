@@ -6,6 +6,7 @@ const VIDEO_URL =
 
 export const films: Films = [
   {
+    id: 1,
     genre: Genres.Drama,
     year: '2014',
     title: 'The Grand Budapest Hotel',
@@ -14,6 +15,7 @@ export const films: Films = [
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
   },
   {
+    id: 2,
     genre: Genres.KidsFamily,
     year: '2018',
     title: 'Fantastic Beasts: The Crimes of Grindelwald',
@@ -23,6 +25,7 @@ export const films: Films = [
       'Eddie Redmayne, Katherine Waterston, Dan Fogler, Alison Sudol and other',
   },
   {
+    id: 3,
     genre: Genres.Drama,
     year: '2018',
     title: 'Bohemian Rhapsody',
@@ -31,6 +34,7 @@ export const films: Films = [
     starring: 'Rami Malek, Lucy Boynton, Gwilym Lee, Ben Hardy and other',
   },
   {
+    id: 4,
     genre: Genres.Drama,
     year: '2015',
     title: 'Macbeth',
@@ -40,6 +44,7 @@ export const films: Films = [
       'Michael Fassbender, Marion Cotillard, Paddy Considine, Sean Harris and other',
   },
   {
+    id: 5,
     genre: Genres.Thriller,
     year: '2011',
     title: 'We need to talk about Kevin',
@@ -48,6 +53,7 @@ export const films: Films = [
     starring: 'Tilda Swinton, John C. Reilly, Ezra Miller',
   },
   {
+    id: 6,
     genre: Genres.Comedie,
     year: '2014',
     title: 'What We Do in the Shadows',
@@ -57,6 +63,7 @@ export const films: Films = [
       'Taika Waititi, Jemaine Clement, Jonathan Brugh, Cori Gonzalez-Macuer, Stu Rutherford',
   },
   {
+    id: 7,
     genre: Genres.Drama,
     year: '2015',
     title: 'Revenant',
@@ -65,6 +72,7 @@ export const films: Films = [
     starring: 'Leonardo DiCaprio, Tom Hardy, Domhnall Gleeson, Will Poulter',
   },
   {
+    id: 8,
     genre: Genres.Comedie,
     year: '2003',
     title: 'Johnny English',
@@ -73,6 +81,7 @@ export const films: Films = [
     starring: 'Rowan Atkinson, Natalie Imbruglia, Ben Miller, John Malkovich',
   },
   {
+    id: 9,
     genre: '',
     year: '',
     title: 'Shutter Island',
@@ -81,6 +90,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 10,
     genre: '',
     year: '',
     title: 'Pulp Fiction',
@@ -89,6 +99,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 11,
     genre: '',
     year: '',
     title: 'No Country for Old Men',
@@ -97,6 +108,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 12,
     genre: '',
     year: '',
     title: 'Snatch',
@@ -105,6 +117,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 13,
     genre: '',
     year: '',
     title: 'Moonrise Kingdom',
@@ -113,6 +126,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 14,
     genre: '',
     year: '',
     title: 'Seven Years in Tibet',
@@ -121,6 +135,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 15,
     genre: '',
     year: '',
     title: 'Midnight Special',
@@ -129,6 +144,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 16,
     genre: '',
     year: '',
     title: 'War of the Worlds',
@@ -137,6 +153,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 17,
     genre: '',
     year: '',
     title: 'Dardjeeling Limited',
@@ -145,6 +162,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 18,
     genre: '',
     year: '',
     title: 'Orlando',
@@ -153,6 +171,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 20,
     genre: '',
     year: '',
     title: 'Mindhunter',
@@ -161,6 +180,7 @@ export const films: Films = [
     starring: '',
   },
   {
+    id: 21,
     genre: '',
     year: '',
     title: 'Midnight Special',

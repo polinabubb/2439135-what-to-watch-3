@@ -1,20 +1,27 @@
 import { FilmCard } from '../film-cards/film-card';
-import { Film, Films } from '../../types/films';
-//import {useState} from 'react';
-//import {FIRST_MAIN_FILM} from '../../const'
+import { Films } from '../../types/films';
+import { useState } from 'react';
 
 type FilmCardsProps = {
+  mainFilmId: number;
   films: Films;
 };
-type FilmCardProps = Film;
 
-export function FilmCards({ films }: FilmCardsProps): JSX.Element {
-  //const [mainFilm, setMainFilm] = useState(FIRST_MAIN_FILM);
+export function FilmCards({ mainFilmId, films }: FilmCardsProps): JSX.Element {
+  const [selectedFilm, setSelectedFilm] = useState(0);
   return (
     <div className="catalog__films-list">
-      {films.map((film) => (
-        <FilmCard {...film} />
-      ))}
+      {films.map((film) => {
+        if (film.id !== mainFilmId)
+          return (
+            <FilmCard
+              film={film}
+              onFilmCard={(id) => {
+                setSelectedFilm(id);
+              }}
+            />
+          );
+      })}
     </div>
   );
 }
