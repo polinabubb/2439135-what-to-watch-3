@@ -3,7 +3,7 @@ import { AppRoute } from '../../const';
 import { Film, Films } from '../../types/films';
 import { FilmCards } from '../../components/film-cards/film-cards';
 type MyListPageProps = {
-  mainFilm: Film,
+  mainFilm: Film;
   films: Films;
 };
 function MyListPage({ mainFilm, films }: MyListPageProps): JSX.Element {

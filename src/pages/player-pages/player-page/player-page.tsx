@@ -8,7 +8,8 @@ function PlayerPage({videoUrl}:PlayerPageProps): JSX.Element {
         src={videoUrl}
         className="player__video"
         poster="img/player-poster.jpg"
-      ></video>
+      >
+      </video>
 
       <button type="button" className="player__exit">
         Exit
@@ -21,7 +22,8 @@ function PlayerPage({videoUrl}:PlayerPageProps): JSX.Element {
               className="player__progress"
               value="30"
               max="100"
-            ></progress>
+            >
+            </progress>
             <div className="player__toggler" style={{ left: '30%' }}>
               Toggler
             </div>

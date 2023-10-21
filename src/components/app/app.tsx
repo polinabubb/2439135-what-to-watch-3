@@ -37,7 +37,7 @@ function App(props: AppProps): JSX.Element {
             path={AppRoute.Film}
             element={
               <MoviePage
-                rayting={filmRatings[FIRST_MAIN_FILM.id-1]}
+                rayting={filmRatings[FIRST_MAIN_FILM.id - 1]}
                 mainFilm={FIRST_MAIN_FILM}
                 moreFilms={films}
               />

@@ -24,6 +24,9 @@ function GetSrcFilmPoster(name: string): string {
 }
 function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
   const [filmRating, setfilmRating] = useState(0);
+  if (filmRating !== undefined) {
+    //на будущее с отправкой формы
+  }
   return (
     <section className="film-card film-card--full">
       <Helmet>

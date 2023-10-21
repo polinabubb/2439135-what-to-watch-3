@@ -41,7 +41,8 @@ export function AddReviewForm({ onAnswer }: AddReviewFormProps): JSX.Element {
           name="review-text"
           id="review-text"
           placeholder="Review text"
-        ></textarea>
+        >
+        </textarea>
         <div className="add-review__submit">
           <button className="add-review__btn" type="submit">
             Post

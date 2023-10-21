@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { FIRST_MAIN_FILM } from './const';
-import {films} from '../src/mocks/films'
+import { FIRST_MAIN_FILM } from './mocks/films';
+import {films} from '../src/mocks/films';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
