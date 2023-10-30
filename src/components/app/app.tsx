@@ -9,14 +9,9 @@ import AddReviewPage from '../../pages/add-review-page/add-review-page';
 import PlayerPage from '../../pages/player-pages/player-page/player-page';
 import NotFoundScreen from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-import { Film, Films } from '../../types/films';
+import { AppProps } from '../../types/props';
 import { FIRST_MAIN_FILM, films, VIDEO_URL } from '../../mocks/films';
 import { filmRatings } from '../../mocks/reviews';
-
-type AppProps = {
-  mainFilm: Film;
-  films: Films;
-};
 
 function App(props: AppProps): JSX.Element {
   return (

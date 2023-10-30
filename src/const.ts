@@ -4,6 +4,8 @@ export const Setting = {
   ReleaseDate: '2014',
 };
 
+export const timeoutVideo: number = 1000;
+
 export enum AppRoute {
   Main = '/',
   SignIn = '/login',
@@ -31,7 +33,6 @@ export const Genres = {
   Thriller: 'Thriller',
 };
 
-//export const FIRST_MAIN_FILM = films;
 export const FIRST_MAIN_FILM = {
   id: 1,
   genre: Genres.Drama,
@@ -41,3 +42,9 @@ export const FIRST_MAIN_FILM = {
   director: 'Wes Anderson',
   starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
 };
+
+export enum FilmImage {
+  BgImage,
+  Poster,
+  SmallCard,
+}

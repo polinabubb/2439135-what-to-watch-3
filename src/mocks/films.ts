@@ -1,10 +1,10 @@
-import { Films } from '../types/films';
+import { Film } from '../types/films';
 import { Genres } from '../const';
 
 export const VIDEO_URL =
   'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4';
 
-export const films: Films = [
+export const films: Film[] = [
   {
     id: 1,
     genre: Genres.Drama,
@@ -13,6 +13,8 @@ export const films: Films = [
     text: 'In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.',
     director: 'Wes Anderson',
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 2,
@@ -23,6 +25,8 @@ export const films: Films = [
     director: 'David Yates',
     starring:
       'Eddie Redmayne, Katherine Waterston, Dan Fogler, Alison Sudol and other',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 3,
@@ -32,6 +36,8 @@ export const films: Films = [
     text: 'In 1985, Queen wait to perform at Live Aid. Fifteen years earlier, in 1970, Farrokh Bulsara works as a baggage handler at Heathrow Airport and lives with his parents and sister. He goes to a pub to see the band Smile perform.',
     director: 'Bryan Singer',
     starring: 'Rami Malek, Lucy Boynton, Gwilym Lee, Ben Hardy and other',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 4,
@@ -42,6 +48,8 @@ export const films: Films = [
     director: 'Justin Kurzel',
     starring:
       'Michael Fassbender, Marion Cotillard, Paddy Considine, Sean Harris and other',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 5,
@@ -51,6 +59,8 @@ export const films: Films = [
     text: 'Eva Khatchadourian, once a successful travel writer, lives alone in a rundown house and works in a travel agency near a prison, where she visits her son Kevin.',
     director: 'Lynne Ramsay',
     starring: 'Tilda Swinton, John C. Reilly, Ezra Miller',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 6,
@@ -61,6 +71,8 @@ export const films: Films = [
     director: 'Jemaine Clement and Taika Waititi',
     starring:
       'Taika Waititi, Jemaine Clement, Jonathan Brugh, Cori Gonzalez-Macuer, Stu Rutherford',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 7,
@@ -70,6 +82,8 @@ export const films: Films = [
     text: 'In late 1823, fur trapper Hugh Glass guides Captain Andrew Henry&apos;s trappers through the territory of the present-day Dakotas. While he and his half-Pawnee son, Hawk, are hunting, the company&apos;s camp is attacked by an Arikara war party which is seeking to recover its Chief&apos;s abducted daughter, Powaqa.',
     director: 'Alejandro G. Iñárritu',
     starring: 'Leonardo DiCaprio, Tom Hardy, Domhnall Gleeson, Will Poulter',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 8,
@@ -79,6 +93,8 @@ export const films: Films = [
     text: 'Kindhearted but clumsy MI7 agent Johnny English dreams of becoming Agent One, MI7&apos;s top agent. After the real Agent One and then all of MI7&apos;s remaining agents are killed through English&apos;s unwitting incompetence at his funeral, he is left as the sole surviving agent capable of finishing Agent One&apos;s mission.',
     director: 'Peter Howitt',
     starring: 'Rowan Atkinson, Natalie Imbruglia, Ben Miller, John Malkovich',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 9,
@@ -88,6 +104,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 10,
@@ -97,6 +115,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 11,
@@ -106,6 +126,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 12,
@@ -115,6 +137,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 13,
@@ -124,6 +148,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 14,
@@ -133,6 +159,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 15,
@@ -142,6 +170,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 16,
@@ -151,6 +181,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 17,
@@ -160,6 +192,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 18,
@@ -169,6 +203,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 20,
@@ -178,6 +214,8 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 21,
@@ -187,10 +225,12 @@ export const films: Films = [
     text: '',
     director: '',
     starring: '',
+    trailer:
+      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
 ];
 
-export const FIRST_MAIN_FILM = {
+export const FIRST_MAIN_FILM: Film = {
   id: 1,
   genre: Genres.Drama,
   year: '2014',
@@ -198,4 +238,6 @@ export const FIRST_MAIN_FILM = {
   text: 'In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.',
   director: 'Wes Anderson',
   starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
+  trailer:
+    'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
 };

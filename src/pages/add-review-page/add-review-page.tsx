@@ -5,23 +5,12 @@ import { AddReviewForm } from '../../components/add-review-form/add-review-form'
 import { Logo } from '../../components/logo/logo';
 import { Film } from '../../types/films';
 import { useState } from 'react';
-
+import { FilmImage } from '../../const';
+import { GetSrcFilmImage } from '../../functions/functions.ts';
 type AddReviewPageProps = {
   film: Film;
 };
 
-function GetSrcFilmBgImage(title: string): string {
-  return `img/bg-${title
-    .toLowerCase()
-    .replace(':', '')
-    .replace(/ /gi, '-')}.jpg`;
-}
-function GetSrcFilmPoster(name: string): string {
-  return `img/${name
-    .toLowerCase()
-    .replace(':', '')
-    .replace(/ /gi, '-')}-poster.jpg`;
-}
 function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
   const [filmRating, setfilmRating] = useState(0);
   if (filmRating !== undefined) {
@@ -34,7 +23,10 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
       </Helmet>
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={GetSrcFilmBgImage(film.title)} alt={film.title} />
+          <img
+            src={GetSrcFilmImage(film.title, FilmImage.BgImage)}
+            alt={film.title}
+          />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -74,7 +66,7 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
 
         <div className="film-card__poster film-card__poster--small">
           <img
-            src={GetSrcFilmPoster(film.title)}
+            src={GetSrcFilmImage(film.title, FilmImage.Poster)}
             alt={`${film.title} poster`}
             width="218"
             height="327"

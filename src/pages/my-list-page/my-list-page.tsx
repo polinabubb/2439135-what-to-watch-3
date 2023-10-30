@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { Film, Films } from '../../types/films';
+import { Film } from '../../types/films';
 import { FilmCards } from '../../components/film-cards/film-cards';
 type MyListPageProps = {
   mainFilm: Film;
-  films: Films;
+  films: Film[];
 };
 function MyListPage({ mainFilm, films }: MyListPageProps): JSX.Element {
   return (
