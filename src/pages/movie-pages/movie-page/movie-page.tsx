@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../const';
 import { FilmCards } from '../../../components/film-cards/film-cards';
-import { Film, Films } from '../../../types/films';
+import { Film } from '../../../types/films';
 import { FilmRating } from '../../../types/films';
 type MoviePageProps = {
   rayting: FilmRating;
   mainFilm: Film;
-  moreFilms: Films;
+  moreFilms: Film[];
 };
 function MoviePage({
   rayting,

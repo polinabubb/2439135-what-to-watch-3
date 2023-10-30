@@ -1,31 +1,22 @@
 import { FilmCards } from '../../components/film-cards/film-cards';
-import { Film, Films } from '../../types/films';
+import { Film } from '../../types/films';
+import { FilmImage } from '../../const';
+import { GetSrcFilmImage } from '../../functions/functions.ts';
 
 type WelcomePageProps = {
   mainFilm: Film;
-  films: Films;
+  films: Film[];
 };
-
-function GetSrcFilmPoster(name: string): string {
-  return `img/${name
-    .toLowerCase()
-    .replace(':', '')
-    .replace(/ /gi, '-')}-poster.jpg`;
-}
-
-function GetSrcFilmBgImage(name: string): string {
-  return `img/bg-${name
-    .toLowerCase()
-    .replace(':', '')
-    .replace(/ /gi, '-')}.jpg`;
-}
 
 function WelcomePage({ mainFilm, films }: WelcomePageProps): JSX.Element {
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={GetSrcFilmBgImage(mainFilm.title)} alt={mainFilm.title} />
+          <img
+            src={GetSrcFilmImage(mainFilm.title, FilmImage.BgImage)}
+            alt={mainFilm.title}
+          />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -60,7 +51,7 @@ function WelcomePage({ mainFilm, films }: WelcomePageProps): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster">
               <img
-                src={GetSrcFilmPoster(mainFilm.title)}
+                src={GetSrcFilmImage(mainFilm.title, FilmImage.Poster)}
                 alt={`${mainFilm.title} poster`}
                 width="218"
                 height="327"

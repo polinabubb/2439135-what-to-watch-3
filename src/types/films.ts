@@ -6,13 +6,11 @@ export type Film = {
   text: string;
   director: string;
   starring: string;
+  trailer: string;
 };
-
 export type FilmRating = {
   filmId: number;
   score: number;
   level: string;
   count: number;
 };
-export type FilmRatings = FilmRating[];
-export type Films = Film[];
