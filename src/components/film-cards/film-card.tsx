@@ -12,11 +12,13 @@ type FilmCardProps = {
 export function FilmCard({ film }: FilmCardProps) {
   const [needPlayVideo, setNeedPlayVideo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  let isMouseLeave = false;
   useEffect(() => {
+    let isMouseLeave = false;
     if (needPlayVideo) {
       setTimeout(() => {
-        !isMouseLeave && setIsPlaying(true);
+        if (!isMouseLeave) {
+          setIsPlaying(true);
+        }
       }, timeoutVideo);
     }
     return () => {
@@ -41,7 +43,7 @@ export function FilmCard({ film }: FilmCardProps) {
       <VideoPlayer
         src={film.trailer}
         poster={GetSrcFilmImage(film.title, FilmImage.SmallCard)}
-        muted={true}
+        muted
         isPlaying={isPlaying}
       />
       {!isPlaying && <h3 className="small-film-card__title">{film.title}</h3>}

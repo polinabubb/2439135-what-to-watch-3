@@ -1,6 +1,6 @@
-import { FilmRatings } from '../types/films';
+import { FilmRating } from '../types/films';
 
-export const filmRatings: FilmRatings = [
+export const filmRatings: FilmRating[] = [
   {
     filmId: 1,
     score: 8.9,

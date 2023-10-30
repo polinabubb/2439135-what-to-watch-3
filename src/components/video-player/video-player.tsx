@@ -16,7 +16,9 @@ export function VideoPlayer({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
     const playerElement = videoRef.current;
-    if (!playerElement) return;
+    if (!playerElement) {
+      return;
+    }
     if (!isPlaying) {
       playerElement.load();
       playerElement.pause();
