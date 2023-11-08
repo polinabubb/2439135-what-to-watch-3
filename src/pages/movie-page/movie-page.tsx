@@ -7,8 +7,7 @@ import { GetSrcFilmImage } from '../../functions/functions';
 import { useParams } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { genreChange, countChange, settingFilms } from '../../store/action';
-import './movie-page.css';
-import '../css/pages.css';
+
 type MoviePageProps = {
   films: Film[];
 };
@@ -52,9 +51,10 @@ function MoviePage({ films }: MoviePageProps): JSX.Element {
               <li className="user-block__item">
                 <div className="user-block__avatar">
                   <img
-                    className="avatar_image"
                     src="img/avatar.jpg"
                     alt="User avatar"
+                    width="63"
+                    height="63"
                   />
                 </div>
               </li>
@@ -77,7 +77,7 @@ function MoviePage({ films }: MoviePageProps): JSX.Element {
                   className="btn btn--play film-card__button"
                   type="button"
                 >
-                  <svg className="svg_film_play" viewBox="0 0 19 19">
+                  <svg viewBox="0 0 19 19" width="19" height="19">
                     <use href="#play-s"></use>
                   </svg>
                   <span>Play</span>
@@ -86,7 +86,7 @@ function MoviePage({ films }: MoviePageProps): JSX.Element {
                   className="btn btn--list film-card__button"
                   type="button"
                 >
-                  <svg className="svg_film_list" viewBox="0 0 19 20">
+                  <svg viewBox="0 0 19 20" width="19" height="20">
                     <use href="#add"></use>
                   </svg>
                   <span>My list</span>
@@ -104,9 +104,10 @@ function MoviePage({ films }: MoviePageProps): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
               <img
-                className="poster_big_image"
                 src={GetSrcFilmImage(mainFilm.title, FilmImage.Poster)}
                 alt={mainFilm.title}
+                width="218"
+                height="327"
               />
             </div>
 

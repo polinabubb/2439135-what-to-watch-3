@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { Film } from '../../types/films';
 import { FilmCards } from '../../components/film-cards/film-cards';
-import '../css/pages.css';
+
 type MyListPageProps = {
   mainFilm: Film;
   films: Film[];
@@ -26,9 +26,10 @@ function MyListPage({ mainFilm, films }: MyListPageProps): JSX.Element {
           <li className="user-block__item">
             <div className="user-block__avatar">
               <img
-                className="avatar_image"
                 src="img/avatar.jpg"
                 alt="User avatar"
+                width="63"
+                height="63"
               />
             </div>
           </li>
