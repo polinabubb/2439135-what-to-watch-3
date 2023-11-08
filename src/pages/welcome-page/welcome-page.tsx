@@ -1,14 +1,20 @@
 import { FilmCards } from '../../components/film-cards/film-cards';
 import { Film } from '../../types/films';
 import { FilmImage } from '../../const';
+import { GetCountFilmsByGenre } from './functions.ts';
 import { GetSrcFilmImage } from '../../functions/functions.ts';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
 import { GenresList } from '../../components/genres-list/genres-list.tsx';
+import { countChange, settingFilms } from '../../store/action.ts';
+import '../css/pages.css';
 type WelcomePageProps = {
   mainFilm: Film;
 };
 
 function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
+  const dispatch = useAppDispatch();
+  const countFilms = useAppSelector((state) => state.count);
+  const genre = useAppSelector((state) => state.genre);
   const films = useAppSelector((state) => state.films);
   return (
     <>
@@ -35,10 +41,9 @@ function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
             <li className="user-block__item">
               <div className="user-block__avatar">
                 <img
+                  className="avatar_image"
                   src="img/avatar.jpg"
                   alt="User avatar"
-                  width="63"
-                  height="63"
                 />
               </div>
             </li>
@@ -52,10 +57,9 @@ function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster">
               <img
+                className="poster_image"
                 src={GetSrcFilmImage(mainFilm.title, FilmImage.Poster)}
                 alt={`${mainFilm.title} poster`}
-                width="218"
-                height="327"
               />
             </div>
 
@@ -71,7 +75,7 @@ function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
                   className="btn btn--play film-card__button"
                   type="button"
                 >
-                  <svg viewBox="0 0 19 19" width="19" height="19">
+                  <svg className="svg_film_play" viewBox="0 0 19 19">
                     <use href="#play-s"></use>
                   </svg>
                   <span>Play</span>
@@ -80,7 +84,7 @@ function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
                   className="btn btn--list film-card__button"
                   type="button"
                 >
-                  <svg viewBox="0 0 19 20" width="19" height="20">
+                  <svg className="svg_film_list" viewBox="0 0 19 20">
                     <use href="#add"></use>
                   </svg>
                   <span>My list</span>
@@ -99,12 +103,20 @@ function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
           </ul>
 
           <FilmCards mainFilmId={mainFilm.id} films={films} />
-
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">
-              Show more
-            </button>
-          </div>
+          {GetCountFilmsByGenre(genre) > countFilms && (
+            <div className="catalog__more">
+              <button
+                className="catalog__button"
+                type="button"
+                onClick={() => {
+                  dispatch(countChange({ count: countFilms + 8 }));
+                  dispatch(settingFilms());
+                }}
+              >
+                Show more
+              </button>
+            </div>
+          )}
         </section>
 
         <footer className="page-footer">

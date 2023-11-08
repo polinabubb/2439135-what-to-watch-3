@@ -1,7 +1,8 @@
+import './player-page.css';
 type PlayerPageProps = {
   videoUrl: string;
-}
-function PlayerPage({videoUrl}:PlayerPageProps): JSX.Element {
+};
+function PlayerPage({ videoUrl }: PlayerPageProps): JSX.Element {
   return (
     <div className="player">
       <video
@@ -24,16 +25,14 @@ function PlayerPage({videoUrl}:PlayerPageProps): JSX.Element {
               max="100"
             >
             </progress>
-            <div className="player__toggler" style={{ left: '30%' }}>
-              Toggler
-            </div>
+            <div className="player__toggler">Toggler</div>
           </div>
           <div className="player__time-value">1:30:29</div>
         </div>
 
         <div className="player__controls-row">
           <button type="button" className="player__play">
-            <svg viewBox="0 0 19 19" width="19" height="19">
+            <svg className="svg_button_play" viewBox="0 0 19 19">
               <use href="#play-s"></use>
             </svg>
             <span>Play</span>
@@ -41,7 +40,7 @@ function PlayerPage({videoUrl}:PlayerPageProps): JSX.Element {
           <div className="player__name">Transpotting</div>
 
           <button type="button" className="player__full-screen">
-            <svg viewBox="0 0 27 27" width="27" height="27">
+            <svg className="svg_full_screen" viewBox="0 0 27 27">
               <use href="#full-screen"></use>
             </svg>
             <span>Full screen</span>

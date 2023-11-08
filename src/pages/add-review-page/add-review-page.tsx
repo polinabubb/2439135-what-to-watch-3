@@ -7,6 +7,7 @@ import { Film } from '../../types/films';
 import { useState } from 'react';
 import { FilmImage } from '../../const';
 import { GetSrcFilmImage } from '../../functions/functions.ts';
+import '../css/pages.css';
 type AddReviewPageProps = {
   film: Film;
 };
@@ -51,10 +52,9 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
             <li className="user-block__item">
               <div className="user-block__avatar">
                 <img
+                  className="avatar_image"
                   src="img/avatar.jpg"
                   alt="User avatar"
-                  width="63"
-                  height="63"
                 />
               </div>
             </li>
@@ -66,10 +66,9 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
 
         <div className="film-card__poster film-card__poster--small">
           <img
+            className="poster_image"
             src={GetSrcFilmImage(film.title, FilmImage.Poster)}
             alt={`${film.title} poster`}
-            width="218"
-            height="327"
           />
         </div>
       </div>
