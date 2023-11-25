@@ -38,7 +38,6 @@ export function FilmCard({ film }: FilmCardProps): JSX.Element {
       to={`/films/${film.id}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={() => {}}
     >
       <VideoPlayer
         src={film.previewVideoLink}

@@ -8,9 +8,7 @@ type FilmCardsProps = {
 export function FilmCards({ films }: FilmCardsProps): JSX.Element {
   return (
     <div className="catalog__films-list">
-      {films.map((film) => {
-        return <FilmCard key={film.id} film={film} />;
-      })}
+      {films.map((film) => <FilmCard key={film.id} film={film} />)}
     </div>
   );
 }
