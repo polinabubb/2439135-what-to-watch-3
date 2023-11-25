@@ -3,7 +3,6 @@ import { AppRoute, FilmImage, Genre } from '../../const';
 import { FilmCards } from '../../components/film-cards/film-cards';
 import { Film } from '../../types/films';
 import { Tabs } from '../../components/tabs/tabs';
-import { GetSrcFilmImage } from '../../functions/functions';
 import { useParams } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { genreChange, countChange, settingFilms } from '../../store/action';
@@ -23,8 +22,8 @@ function MoviePage({ films }: MoviePageProps): JSX.Element {
         <div className="film-card__hero">
           <div className="film-card__bg">
             <img
-              src={GetSrcFilmImage(mainFilm.title, FilmImage.BgImage)}
-              alt={mainFilm.title}
+              src={mainFilm.backgroundImage}
+              alt={mainFilm.name}
             />
           </div>
 
@@ -66,10 +65,10 @@ function MoviePage({ films }: MoviePageProps): JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{mainFilm.title}</h2>
+              <h2 className="film-card__title">{mainFilm.name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{mainFilm.genre}</span>
-                <span className="film-card__year">{mainFilm.year}</span>
+                <span className="film-card__year">{mainFilm.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -104,8 +103,8 @@ function MoviePage({ films }: MoviePageProps): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
               <img
-                src={GetSrcFilmImage(mainFilm.title, FilmImage.Poster)}
-                alt={mainFilm.title}
+                src={mainFilm.posterImage}
+                alt={mainFilm.name}
                 width="218"
                 height="327"
               />

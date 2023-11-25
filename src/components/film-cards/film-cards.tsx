@@ -2,7 +2,7 @@ import { FilmCard } from '../film-cards/film-card';
 import { Film } from '../../types/films';
 
 type FilmCardsProps = {
-  mainFilmId: number;
+  mainFilmId: string;
   films: Film[];
 };
 

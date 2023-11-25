@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { VideoPlayer } from '../../components/video-player/video-player.tsx';
 import { FilmImage, timeoutVideo } from '../../const';
-import { GetSrcFilmImage } from '../../functions/functions.ts';
 import { useAppDispatch } from '../../hooks';
 import { genreChange, settingFilms } from '../../store/action';
 
@@ -48,12 +47,12 @@ export function FilmCard({ film }: FilmCardProps): JSX.Element {
       }}
     >
       <VideoPlayer
-        src={film.trailer}
-        poster={GetSrcFilmImage(film.title, FilmImage.SmallCard)}
+        src={film.previewVideoLink}
+        poster={film.previewImage}
         muted
         isPlaying={isPlaying}
       />
-      {!isPlaying && <h3 className="small-film-card__title">{film.title}</h3>}
+      {!isPlaying && <h3 className="small-film-card__title">{film.name}</h3>}
     </Link>
   );
 }

@@ -1,8 +1,6 @@
 import { FilmCards } from '../../components/film-cards/film-cards';
 import { Film } from '../../types/films';
 import { FilmImage } from '../../const';
-import { GetCountFilmsByGenre } from './functions.ts';
-import { GetSrcFilmImage } from '../../functions/functions.ts';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { GenresList } from '../../components/genres-list/genres-list.tsx';
 import { countChange, settingFilms } from '../../store/action.ts';
@@ -16,13 +14,14 @@ function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
   const countFilms = useAppSelector((state) => state.count);
   const genre = useAppSelector((state) => state.genre);
   const films = useAppSelector((state) => state.films);
+
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
           <img
-            src={GetSrcFilmImage(mainFilm.title, FilmImage.BgImage)}
-            alt={mainFilm.title}
+            src={mainFilm.backgroundImage}
+            alt={mainFilm.name}
           />
         </div>
 
@@ -58,18 +57,18 @@ function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster">
               <img
-                src={GetSrcFilmImage(mainFilm.title, FilmImage.Poster)}
-                alt={`${mainFilm.title} poster`}
+                src={mainFilm.posterImage}
+                alt={`${mainFilm.name} poster`}
                 width="218"
                 height="327"
               />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{mainFilm.title}</h2>
+              <h2 className="film-card__title">{mainFilm.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{mainFilm.title}</span>
-                <span className="film-card__year">{mainFilm.year}</span>
+                <span className="film-card__genre">{mainFilm.name}</span>
+                <span className="film-card__year">{mainFilm.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -105,7 +104,8 @@ function WelcomePage({ mainFilm }: WelcomePageProps): JSX.Element {
           </ul>
 
           <FilmCards mainFilmId={mainFilm.id} films={films} />
-          {GetCountFilmsByGenre(genre) > countFilms && (
+
+          {films.filter(film=> film.genre === genre).length > countFilms && (
             <div className="catalog__more">
               <button
                 className="catalog__button"

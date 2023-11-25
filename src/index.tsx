@@ -3,7 +3,9 @@ import App from './components/app/app';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import { idFirstFilm } from './const';
-import { films } from './mocks/films';
+import {fetchFilmsAction} from './store/api-actions';
+
+store.dispatch(fetchFilmsAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,6 +13,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={store}>
-    <App mainFilm={films[idFirstFilm]} />
+
+    <App  />
   </Provider>
 );

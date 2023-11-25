@@ -9,17 +9,25 @@ import AddReviewPage from '../../pages/add-review-page/add-review-page';
 import PlayerPage from '../../pages/player-pages/player-page/player-page';
 import NotFoundScreen from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-import { films, VIDEO_URL } from '../../mocks/films';
 import { AppProps } from '../../types/props';
+import {useAppSelector} from '../../hooks';
+import Loading from '../../components/loading/loading';
 
-function App({ mainFilm }: AppProps): JSX.Element {
+function App(): JSX.Element {
+  const isQuestionsDataLoading = useAppSelector((state) => state.isFilmsDataLoading);
+const films = useAppSelector((state) => state.films);
+  if ( isQuestionsDataLoading) {
+    return (
+      <Loading />
+    );
+  }
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<WelcomePage mainFilm={mainFilm} />}
+            element={<WelcomePage mainFilm={films[0]} />}
           />
           <Route path={AppRoute.SignIn} element={<SignInPage />} />
           <Route
@@ -37,7 +45,7 @@ function App({ mainFilm }: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.Player}
-            element={<PlayerPage videoUrl={VIDEO_URL} />}
+            element={<PlayerPage videoUrl={films[0].videoLink} />}
           />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>

@@ -3,11 +3,19 @@ export const Setting = {
   Genre: 'Dramaaaaa',
   ReleaseDate: '2014',
 };
-
+export enum APIRoute {
+  Main = '/',
+  SignIn = '/login',
+  MyList = '/mylist',
+  Film = '/films/:id',
+  Films = '/films',
+  AddReview = '/films/:id/review',
+  Player = '/player/:id',
+}
 export const timeoutVideo = 1000;
 
 export const idFirstFilm = 0;
-
+export const TIMEOUT_SHOW_ERROR = 2000;
 export enum AppRoute {
   Main = '/',
   SignIn = '/login',

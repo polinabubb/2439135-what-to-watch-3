@@ -1,12 +1,21 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { genreChange, countChange, settingFilms } from './action';
+import { genreChange, countChange, settingFilms, loadFilms, setFilmsDataLoadingStatus, } from './action';
 import { Genre } from '../const';
-import { films } from '../mocks/films';
+import {Film} from '../types/films'
 
-const initialState = {
+type InitalState = {
+  genre: Genre;
+  films: Film[];
+  count: number;
+  error: string | null;
+  isFilmsDataLoading: boolean;
+}
+const initialState:InitalState = {
   genre: Genre.All,
-  films: films.slice(0, 8),
+  films: [],
   count: 8,
+  error: null,
+  isFilmsDataLoading: false,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -20,14 +29,16 @@ const reducer = createReducer(initialState, (builder) => {
       state.genre = genre;
     })
     .addCase(settingFilms, (state) => {
-      if (state.genre === Genre.All) {
-        state.films = films.slice(0, state.count);
-      } else {
-        state.films = films
-          .filter((film) => film.genre === state.genre)
-          .slice(0, state.count);
-      }
-    });
+
+    })
+    .addCase(loadFilms, (state, action) => {
+      state.films = action.payload;
+    //  alert(state.films[0])
+    })
+    .addCase(setFilmsDataLoadingStatus, (state, action) => {
+      state.isFilmsDataLoading = action.payload;
+    })
+
 });
 
 export { reducer };
