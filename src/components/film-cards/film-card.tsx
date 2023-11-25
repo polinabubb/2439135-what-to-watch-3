@@ -1,19 +1,16 @@
-import type { Film } from '../../types/films.ts';
+import type { FilmCardType } from '../../types/films.ts';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { VideoPlayer } from '../../components/video-player/video-player.tsx';
-import { FilmImage, timeoutVideo } from '../../const';
-import { useAppDispatch } from '../../hooks';
-import { genreChange, settingFilms } from '../../store/action';
+import { timeoutVideo } from '../../const';
 
 type FilmCardProps = {
-  film: Film;
+  film: FilmCardType;
 };
 
 export function FilmCard({ film }: FilmCardProps): JSX.Element {
   const [needPlayVideo, setNeedPlayVideo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const dispatch = useAppDispatch();
   useEffect(() => {
     let isMouseLeave = false;
     if (needPlayVideo) {
@@ -41,10 +38,7 @@ export function FilmCard({ film }: FilmCardProps): JSX.Element {
       to={`/films/${film.id}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={() => {
-        dispatch(genreChange({ genre: film.genre }));
-        dispatch(settingFilms());
-      }}
+      onClick={() => {}}
     >
       <VideoPlayer
         src={film.previewVideoLink}

@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { AddReviewForm } from '../../components/add-review-form/add-review-form';
 import { Logo } from '../../components/logo/logo';
-import { Film } from '../../types/films';
+import { PromoFilmType } from '../../types/films';
 import { useState } from 'react';
-import { FilmImage } from '../../const';
 
 type AddReviewPageProps = {
-  film: Film;
+  film: PromoFilmType;
 };
 
 function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
@@ -23,10 +22,7 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
       </Helmet>
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img
-            src={film.backgroundImage}
-            alt={film.name}
-          />
+          <img src={film.backgroundImage} alt={film.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
