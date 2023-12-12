@@ -2,13 +2,22 @@ import { FilmCards } from '../../components/film-cards/film-cards';
 import { PromoFilmType } from '../../types/films';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { GenresList } from '../../components/genres-list/genres-list.tsx';
-import { setCount, setFilmsDisplayed } from '../../store/action.ts';
 import { AuthorizationStatus, AppRoute } from '../../const';
 import { UserBlock } from '../../components/user-block/user-block.tsx';
 import { useNavigate } from 'react-router';
-
+//import { getAuthorizationStatus } from '../../store/user-process/selectors.ts';
+import {
+  getFilmsCount,
+  getFilmsByGenre,
+  getFilmsDisplayed,
+} from '../../store/film-data/selectors.ts';
+import {
+  increaseFilmsCount,
+  setFilmsByGenre,
+  setFilmsDisplayed,
+} from '../../store/film-data/film-data.ts';
 type WelcomePageProps = {
-  promoFilm: PromoFilmType;
+  promoFilm: PromoFilmType | null;
   authorizationStatus: AuthorizationStatus;
 };
 
@@ -17,11 +26,11 @@ function WelcomePage({
   authorizationStatus,
 }: WelcomePageProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const countDisplayedFilms = useAppSelector((state) => state.count);
-  const fFilmsByGenres = useAppSelector((state) => state.filmsByGenre);
-  const films = useAppSelector((state) => state.filmsDisplayed);
+  const countDisplayedFilms = useAppSelector(getFilmsCount);
+  const filmsByGenre = useAppSelector(getFilmsByGenre);
+  const films = useAppSelector(getFilmsDisplayed);
   const navigate = useNavigate();
-  const userListFilms = useAppSelector((state) => state.userListFilms);
+  const userFilms = []; //useAppSelector(getUserFilms);
   const onCliclMyListHandler = () => {
     navigate(AppRoute.MyList);
   };
@@ -29,7 +38,7 @@ function WelcomePage({
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={promoFilm.backgroundImage} alt={promoFilm.name} />
+          <img src={promoFilm?.backgroundImage} alt={promoFilm?.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -50,18 +59,18 @@ function WelcomePage({
           <div className="film-card__info">
             <div className="film-card__poster">
               <img
-                src={promoFilm.posterImage}
-                alt={`${promoFilm.name} poster`}
+                src={promoFilm?.posterImage}
+                alt={`${promoFilm?.name || ''} poster`}
                 width="218"
                 height="327"
               />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{promoFilm.name}</h2>
+              <h2 className="film-card__title">{promoFilm?.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{promoFilm.name}</span>
-                <span className="film-card__year">{promoFilm.released}</span>
+                <span className="film-card__genre">{promoFilm?.name}</span>
+                <span className="film-card__year">{promoFilm?.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -83,9 +92,7 @@ function WelcomePage({
                     <use href="#add"></use>
                   </svg>
                   <span>My list</span>
-                  <span className="film-card__count">
-                    {userListFilms.length}
-                  </span>
+                  <span className="film-card__count">{userFilms.length}</span>
                 </button>
               </div>
             </div>
@@ -101,13 +108,13 @@ function WelcomePage({
 
           <FilmCards films={films} />
 
-          {countDisplayedFilms < fFilmsByGenres.length && (
+          {countDisplayedFilms < filmsByGenre.length && (
             <div className="catalog__more">
               <button
                 className="catalog__button"
                 type="button"
                 onClick={() => {
-                  dispatch(setCount({ count: countDisplayedFilms + 8 }));
+                  dispatch(increaseFilmsCount());
                   dispatch(setFilmsDisplayed());
                 }}
               >

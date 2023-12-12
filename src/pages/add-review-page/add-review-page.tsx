@@ -4,9 +4,9 @@ import { AppRoute } from '../../const';
 import { AddReviewForm } from '../../components/add-review-form/add-review-form';
 import { Logo } from '../../components/logo/logo';
 import { useAppSelector } from '../../hooks/index';
-
+import { getFilm } from '../../store/film-data/selectors';
 function AddReviewPage(): JSX.Element {
-  const film = useAppSelector((state) => state.film);
+  const film = useAppSelector(getFilm);
   return (
     <section className="film-card film-card--full">
       <Helmet>

@@ -1,11 +1,15 @@
 import type { FilmType } from '../../types/films.ts';
 import type { Comment } from '../../types/reviews.ts';
+import { useAppSelector } from '../../hooks';
+import {
+  getComments,
+} from '../../store/film-data/selectors.ts';
 type TabOverviewProps = {
   film: FilmType;
 };
 
 export function TabOverview({ film }: TabOverviewProps): JSX.Element {
-  const comments: Comment[] = [];
+  const comments = useAppSelector(getComments);
   return (
     <>
       <div className="film-rating">
