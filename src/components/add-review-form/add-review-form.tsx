@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/index';
 import { sendCommentAction } from '../../store/api-actions';
 import { NotFoundPage } from '../../pages/not-found-page/not-found-page';
-import { getFilm, getComments } from '../../store/film-data/selectors.ts';
+import { getFilm } from '../../store/film-data/selectors.ts';
 
 export function AddReviewForm(): JSX.Element {
   const [userRayting, setUserRayting] = useState(0);

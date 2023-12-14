@@ -5,7 +5,6 @@ import { GenresList } from '../../components/genres-list/genres-list.tsx';
 import { AuthorizationStatus, AppRoute } from '../../const';
 import { UserBlock } from '../../components/user-block/user-block.tsx';
 import { useNavigate } from 'react-router';
-//import { getAuthorizationStatus } from '../../store/user-process/selectors.ts';
 import {
   getFilmsCount,
   getFilmsByGenre,
@@ -13,7 +12,6 @@ import {
 } from '../../store/film-data/selectors.ts';
 import {
   increaseFilmsCount,
-  setFilmsByGenre,
   setFilmsDisplayed,
 } from '../../store/film-data/film-data.ts';
 type WelcomePageProps = {
@@ -34,6 +32,7 @@ function WelcomePage({
   const onCliclMyListHandler = () => {
     navigate(AppRoute.MyList);
   };
+
   return (
     <>
       <section className="film-card">

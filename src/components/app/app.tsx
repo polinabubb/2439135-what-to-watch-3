@@ -21,6 +21,7 @@ import {
 function App(): JSX.Element {
   const isFilmsDataLoading = useAppSelector(getFilmsDataLoadingStatus);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  // alert(authorizationStatus);
   const promoFilm = useAppSelector(getPromoFilm);
 
   if (isFilmsDataLoading) {

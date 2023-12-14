@@ -4,8 +4,8 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 import {
   fetchFilmsAction,
- fetchPromoFilmAction,
- //fetchUserListAction,
+  fetchPromoFilmAction,
+  //fetchUserListAction,
 } from './store/api-actions';
 
 import ErrorMessage from './components/error-message/error-message';

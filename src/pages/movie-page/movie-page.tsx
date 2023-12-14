@@ -25,7 +25,7 @@ import {
 } from '../../store/film-data/selectors.ts';
 
 import {
-  setSimilarFilmsDisplayed, resetSimilarFilmsCount, increaseFilmsCount, increaseSimilarFilmsCount
+  setSimilarFilmsDisplayed, increaseSimilarFilmsCount
 } from '../../store/film-data/film-data.ts';
 function MoviePage({ authorizationStatus }: MoviePageProps): JSX.Element {
   const { id } = useParams();

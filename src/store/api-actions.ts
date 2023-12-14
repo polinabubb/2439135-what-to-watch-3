@@ -54,10 +54,7 @@ export const checkAuthAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('user/checkAuth', async (_arg, { extra: api }) => {
-  // try {
-  //   await api.get(APIRoute.Login());
-  // } catch {}
-  //let r = 0;
+  await api.get(APIRoute.Login());
 });
 
 export const loginAction = createAsyncThunk<
@@ -75,19 +72,16 @@ export const loginAction = createAsyncThunk<
   saveToken(token);
   // dispatch(redirectToRoute(AppRoute.Result));
 });
-
-export const logoutAction = createAsyncThunk<
-  void,
-  undefined,
-  {
-    dispatch: AppDispatch;
-    state: State;
-    extra: AxiosInstance;
-  }
->('user/logout', async (_arg, { extra: api }) => {
-  await api.delete(APIRoute.Logout());
-  dropToken();
-});
+export const logoutAction = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'user/logout', async (_arg, {extra: api}) => {
+    await api.delete('/logout');
+    dropToken();
+  },
+);
 
 export const fetchSimilarFilmsAction = createAsyncThunk<
   FilmCardType[],
@@ -114,7 +108,6 @@ export const fetchCommentsAction = createAsyncThunk<
   const { data } = await api.get<Comment[]>(APIRoute.Comments(_arg));
   return data;
 });
-
 export const sendCommentAction = createAsyncThunk<
   Comment,
   {
@@ -126,21 +119,14 @@ export const sendCommentAction = createAsyncThunk<
     dispatch: AppDispatch;
     state: State;
     extra: AxiosInstance;
-  }
-  >('data/sendComment', async ({ id, rating, comment }, { extra: api }) => {
+  }>('data/sendComment', async ({ id, rating, comment }, { extra: api }) => {
+
     const {data} = await api.post<Comment>(APIRoute.Comments(id), {
       rating: rating,
       comment: comment,
     });
-    alert('355354');
     return data;
   });
-
-
-
- // alert('api-act');
-
-
 
 export const fetchUserListAction = createAsyncThunk<
   FilmCardType[],

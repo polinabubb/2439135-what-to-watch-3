@@ -1,14 +1,13 @@
 import { AppRoute } from '../../const';
-//import { useAppDispatch } from '../../hooks';
-//import { requireAuthorization } from '../../store/user-process/selectors.ts';
-//import { AuthorizationStatus } from '../../const.ts';
+import { useAppDispatch } from '../../hooks';
+import { logoutAction } from '../../store/api-actions.ts';
 import { useNavigate } from 'react-router-dom';
 
 export function UserBlockAuth(): JSX.Element {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const onClickHadler = () => {
-    // dispatch(requireAuthorization(AuthorizationStatus.Unknown));
+    dispatch(logoutAction());
     navigate(AppRoute.Main);
   };
   return (
