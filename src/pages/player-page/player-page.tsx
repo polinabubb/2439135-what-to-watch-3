@@ -51,7 +51,8 @@ function PlayerPage(): JSX.Element {
         muted={false}
         onDurationChange={handleDurationChange}
         onTimeUpdate={handleUpdateProgress}
-      ></video>
+      >
+      </video>
 
       <button
         type="button"
@@ -68,7 +69,8 @@ function PlayerPage(): JSX.Element {
               className="player__progress"
               value={videoRef.current?.currentTime}
               max={videoRef.current?.duration}
-            ></progress>
+            >
+            </progress>
             <div className="player__toggler" style={{ left: '30%' }}>
               Toggler
             </div>
@@ -81,8 +83,7 @@ function PlayerPage(): JSX.Element {
             type="button"
             className="player__play"
             onClick={() =>
-              setIsPlaying ? setIsPlaying(!isPlaying) : undefined
-            }
+              setIsPlaying ? setIsPlaying(!isPlaying) : undefined}
           >
             <svg viewBox="0 0 19 19" width="19" height="19">
               <use href="#play-s"></use>
@@ -94,7 +95,7 @@ function PlayerPage(): JSX.Element {
           <button
             type="button"
             className="player__full-screen"
-            onClick={() => videoRef.current?.requestFullscreen()}
+
           >
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use href="#full-screen"></use>
