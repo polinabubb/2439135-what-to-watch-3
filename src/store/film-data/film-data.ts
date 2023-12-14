@@ -9,7 +9,8 @@ import {
   fetchFilmsAction,
   fetchPromoFilmAction,
   fetchSimilarFilmsAction,
-  fetchUserListAction
+  fetchUserListAction,
+
 } from '../api-actions.ts';
 
 export const InitialNumberFilms = 8;
@@ -24,7 +25,6 @@ const initialState: FilmData = {
   similarFilmsCount: 8,
   promoFilm: null,
   film: null,
-  //error: string | null;
   similarFilms: [],
   comments: [],
   userListFilms: [],
@@ -170,6 +170,7 @@ export const filmData = createSlice({
         state.comments = [...state.comments, action.payload];
         state.isCommentSend = false;
       })
+
 
 
       .addCase(fetchUserListAction.pending, (state) => {

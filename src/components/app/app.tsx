@@ -9,24 +9,24 @@ import AddReviewPage from '../../pages/add-review-page/add-review-page';
 import PlayerPage from '../../pages/player-page/player-page.tsx';
 import NotFoundScreen from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector,  } from '../../hooks';
 import Loading from '../../components/loading/loading';
-
-//import {filmsDataLoading, } from '../../store/film-process/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors.ts';
 import {
   getFilmsDataLoadingStatus,
-  getPromoFilm,
+  getPromoFilm,getUserFilms
 } from '../../store/film-data/selectors.ts';
 function App(): JSX.Element {
+  const userFilms = useAppSelector(getUserFilms);
   const isFilmsDataLoading = useAppSelector(getFilmsDataLoadingStatus);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
-  // alert(authorizationStatus);
+
   const promoFilm = useAppSelector(getPromoFilm);
 
   if (isFilmsDataLoading) {
     return <Loading />;
   }
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -37,6 +37,7 @@ function App(): JSX.Element {
               <WelcomePage
                 promoFilm={promoFilm}
                 authorizationStatus={authorizationStatus}
+                userFilms={userFilms}
               />
             }
           />
@@ -45,13 +46,13 @@ function App(): JSX.Element {
             path={AppRoute.MyList}
             element={
               <PrivateRoute authorizationStatus={authorizationStatus}>
-                <MyListPage authorizationStatus={authorizationStatus} />
+                <MyListPage authorizationStatus={authorizationStatus}   userFilms={userFilms}/>
               </PrivateRoute>
             }
           />
           <Route
             path={AppRoute.Film}
-            element={<MoviePage authorizationStatus={authorizationStatus} />}
+            element={<MoviePage authorizationStatus={authorizationStatus}   userFilms={userFilms}/>}
           />
           <Route
             path={AppRoute.AddReview}
