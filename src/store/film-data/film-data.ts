@@ -192,7 +192,6 @@ export const {
   resetFilmsCount,
   increaseSimilarFilmsCount,
   resetSimilarFilmsCount,
-
   setFilmsDisplayed,
   setGenre,
   setFilmsByGenre,
