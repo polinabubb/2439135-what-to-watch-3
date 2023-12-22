@@ -10,7 +10,7 @@ export function FilmCards({ films }: FilmCardsProps): JSX.Element {
     <div className="catalog__films-list" data-testid="catalog__films-list">
       {films.map((film) => (
         <div data-testid="film-card">
-          <FilmCard key={film.id} film={film} />{' '}
+          <FilmCard key={film.id} film={film} />
         </div>
       ))}
     </div>

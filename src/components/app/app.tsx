@@ -30,7 +30,6 @@ function App(): JSX.Element {
 
   return (
     <HelmetProvider>
-      {' '}
       <BrowserRouter>
         <Routes>
           <Route
@@ -74,7 +73,7 @@ function App(): JSX.Element {
           />
           <Route path={AppRoute.Player} element={<PlayerPage />} />
           <Route path="*" element={<NotFoundScreen />} />
-        </Routes>{' '}
+        </Routes>
       </BrowserRouter>
     </HelmetProvider>
   );
