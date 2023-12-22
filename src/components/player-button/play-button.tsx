@@ -27,3 +27,4 @@ export function PlayButton({
     </button>
   );
 }
+export default PlayButton;

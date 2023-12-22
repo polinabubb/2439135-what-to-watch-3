@@ -15,7 +15,7 @@ export const APIRoute = {
   AddReview: () => '/films/:id/review',
   MyList: () => '/mylist',
   AddInFavorite: (filmId: string, status: string) =>
-  `/favorite/${filmId}/${status}`,
+    `/favorite/${filmId}/${status}`,
 };
 export const timeoutVideo = 1000;
 export const TIMEOUT_SHOW_ERROR = 2000;

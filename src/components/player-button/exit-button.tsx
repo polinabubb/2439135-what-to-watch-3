@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router';
 import { AppRoute } from '../../const.ts';
 export function ExitButton(): JSX.Element {
   const navigate = useNavigate();
-
   return (
     <button
       type="button"
@@ -13,3 +12,4 @@ export function ExitButton(): JSX.Element {
     </button>
   );
 }
+export default ExitButton;

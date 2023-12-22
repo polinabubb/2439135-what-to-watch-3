@@ -76,6 +76,6 @@ export function AddToFavorite({
       <span className="film-card__count">{userFilms.length}</span>
     </button>
 
-   );
+  );
 
 }

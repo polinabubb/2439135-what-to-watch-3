@@ -143,7 +143,6 @@ export const fetchUserListAction = createAsyncThunk<
 });
 
 
-
 export const addFilmInFavorite = createAsyncThunk<
   FilmType,
   { filmId: string; status: boolean },

@@ -9,12 +9,13 @@ import AddReviewPage from '../../pages/add-review-page/add-review-page';
 import PlayerPage from '../../pages/player-page/player-page.tsx';
 import NotFoundScreen from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-import { useAppSelector,  } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 import Loading from '../../components/loading/loading';
 import { getAuthorizationStatus } from '../../store/user-process/selectors.ts';
 import {
   getFilmsDataLoadingStatus,
-  getPromoFilm,getUserFilms
+  getPromoFilm,
+  getUserFilms,
 } from '../../store/film-data/selectors.ts';
 function App(): JSX.Element {
   const userFilms = useAppSelector(getUserFilms);
@@ -29,6 +30,7 @@ function App(): JSX.Element {
 
   return (
     <HelmetProvider>
+      {' '}
       <BrowserRouter>
         <Routes>
           <Route
@@ -46,13 +48,21 @@ function App(): JSX.Element {
             path={AppRoute.MyList}
             element={
               <PrivateRoute authorizationStatus={authorizationStatus}>
-                <MyListPage authorizationStatus={authorizationStatus}   userFilms={userFilms}/>
+                <MyListPage
+                  authorizationStatus={authorizationStatus}
+                  userFilms={userFilms}
+                />
               </PrivateRoute>
             }
           />
           <Route
             path={AppRoute.Film}
-            element={<MoviePage authorizationStatus={authorizationStatus}   userFilms={userFilms}/>}
+            element={
+              <MoviePage
+                authorizationStatus={authorizationStatus}
+                userFilms={userFilms}
+              />
+            }
           />
           <Route
             path={AppRoute.AddReview}
@@ -62,12 +72,9 @@ function App(): JSX.Element {
               </PrivateRoute>
             }
           />
-          <Route
-            path={AppRoute.Player}
-            element={<PlayerPage />}
-          />
+          <Route path={AppRoute.Player} element={<PlayerPage />} />
           <Route path="*" element={<NotFoundScreen />} />
-        </Routes>
+        </Routes>{' '}
       </BrowserRouter>
     </HelmetProvider>
   );

@@ -61,7 +61,9 @@ function PlayerPage(): JSX.Element {
     return hourSection;
   };
   const playHandler = () => {
-    if (videoRef.current) setIsPlaying(!isPlaying);
+    if (videoRef.current) {
+      setIsPlaying(!isPlaying);
+    }
   };
 
   useEffect(() => {
@@ -79,7 +81,8 @@ function PlayerPage(): JSX.Element {
         ref={videoRef}
         muted={false}
         onTimeUpdate={handleUpdateProgress}
-      ></video>
+      >
+      </video>
 
       <ExitButton />
 
@@ -91,7 +94,8 @@ function PlayerPage(): JSX.Element {
               value={videoRef.current?.currentTime}
               max={videoRef.current?.duration}
               ref={progressRef}
-            ></progress>
+            >
+            </progress>
             <div
               className="player__toggler"
               style={{ left: `${playingProgress}%` }}

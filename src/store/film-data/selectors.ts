@@ -3,7 +3,7 @@ import { State } from '../../types/state';
 import { Comment } from '../../types/reviews';
 import { FilmCardType, FilmType } from '../../types/films';
 
-export const getFilm = (state:  Pick<State, NameSpace.Data>): FilmType | null =>
+export const getFilm = (state: Pick<State, NameSpace.Data>): FilmType | null =>
   state[NameSpace.Data].film;
 export const getFilmDataLoadingStatus = (state: Pick<State, NameSpace.Data>): boolean =>
   state[NameSpace.Data].isFilmLoading;

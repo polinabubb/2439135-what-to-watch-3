@@ -172,7 +172,6 @@ export const filmData = createSlice({
       })
 
 
-
       .addCase(fetchUserListAction.pending, (state) => {
         state.isUserFilmsLoading = true;
       })

@@ -26,7 +26,7 @@ type WelcomePageProps = {
 function WelcomePage({
   promoFilm,
   authorizationStatus,
-  }: WelcomePageProps): JSX.Element {
+}: WelcomePageProps): JSX.Element {
   const dispatch = useAppDispatch();
   const countDisplayedFilms = useAppSelector(getFilmsCount);
   const filmsByGenre = useAppSelector(getFilmsByGenre);

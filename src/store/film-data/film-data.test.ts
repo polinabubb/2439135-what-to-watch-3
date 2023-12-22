@@ -14,7 +14,7 @@ import {
 import { makeFakeGenre, makeFakeFilms } from '../../utils/mocks';
 
 describe('Film data ', () => {
-  let defaultState = {
+  const defaultState = {
     genre: Genre.All,
     films: [],
     filmsDisplayed: [],
