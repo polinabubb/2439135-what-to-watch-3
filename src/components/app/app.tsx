@@ -1,5 +1,5 @@
 import WelcomePage from '../../pages/welcome-page/welcome-page';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute } from '../../const';
 import MyListPage from '../../pages/my-list-page/my-list-page';
@@ -15,10 +15,8 @@ import { getAuthorizationStatus } from '../../store/user-process/selectors.ts';
 import {
   getFilmsDataLoadingStatus,
   getPromoFilm,
-  getUserFilms,
 } from '../../store/film-data/selectors.ts';
 function App(): JSX.Element {
-  const userFilms = useAppSelector(getUserFilms);
   const isFilmsDataLoading = useAppSelector(getFilmsDataLoadingStatus);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
@@ -32,49 +30,46 @@ function App(): JSX.Element {
     <HelmetProvider>
 
 
-        <Routes>
-          <Route
-            path={AppRoute.Main}
-            element={
-              <WelcomePage
-                promoFilm={promoFilm}
+      <Routes>
+        <Route
+          path={AppRoute.Main}
+          element={
+            <WelcomePage
+              promoFilm={promoFilm}
+              authorizationStatus={authorizationStatus}
+            />
+          }
+        />
+        <Route path={AppRoute.Login} element={<SignInPage />} />
+        <Route
+          path={AppRoute.MyList}
+          element={
+            <PrivateRoute authorizationStatus={authorizationStatus}>
+              <MyListPage
                 authorizationStatus={authorizationStatus}
-                userFilms={userFilms}
               />
-            }
-          />
-          <Route path={AppRoute.Login} element={<SignInPage />} />
-          <Route
-            path={AppRoute.MyList}
-            element={
-              <PrivateRoute authorizationStatus={authorizationStatus}>
-                <MyListPage
-                  authorizationStatus={authorizationStatus}
-                  userFilms={userFilms}
-                />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={AppRoute.Film}
-            element={
-              <MoviePage
-                authorizationStatus={authorizationStatus}
-                userFilms={userFilms}
-              />
-            }
-          />
-          <Route
-            path={AppRoute.AddReview}
-            element={
-              <PrivateRoute authorizationStatus={authorizationStatus}>
-                <AddReviewPage />
-              </PrivateRoute>
-            }
-          />
-          <Route path={AppRoute.Player} element={<PlayerPage />} />
-          <Route path="*" element={<NotFoundScreen />} />
-        </Routes>{' '}
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={AppRoute.Film}
+          element={
+            <MoviePage
+              authorizationStatus={authorizationStatus}
+            />
+          }
+        />
+        <Route
+          path={AppRoute.AddReview}
+          element={
+            <PrivateRoute authorizationStatus={authorizationStatus}>
+              <AddReviewPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path={AppRoute.Player} element={<PlayerPage />} />
+        <Route path="*" element={<NotFoundScreen />} />
+      </Routes>{' '}
 
     </HelmetProvider>
   );

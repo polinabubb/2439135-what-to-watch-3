@@ -6,18 +6,34 @@ import { datatype, date, image, internet, lorem, name } from 'faker';
 import { ThunkDispatch } from 'redux-thunk';
 import { createAPI } from '../services/api';
 import { Action } from 'redux';
-import { AuthorizationStatus, Genre, NameSpace } from '../const.ts';
+import { AuthorizationStatus, Genre } from '../const.ts';
 
 export type AppThunkDispatch = ThunkDispatch<
   State,
   ReturnType<typeof createAPI>,
   Action
 >;
-export const extractActionsTypes = (actions: Action<string>[]) =>
-  actions.map(({ type }) => type);
-
 const getRandom = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
+export const makeFakeGenre = (): Genre => {
+  const genres: Genre[] = [
+    Genre.Action,
+    Genre.Adventure,
+    Genre.All,
+    Genre.Comedie,
+    Genre.Crime,
+    Genre.Documentary,
+    Genre.Drama,
+    Genre.Fantasy,
+    Genre.Horror,
+    Genre.KidsFamily,
+    Genre.Romance,
+    Genre.SciFi,
+  ];
+  return genres.at(getRandom(0, genres.length - 1)) || Genre.All;
+};
+export const extractActionsTypes = (actions: Action<string>[]) =>
+  actions.map(({ type }) => type);
 
 export const makeFakeFilms = () =>
   new Array(getRandom(9, 12)).fill(null).map(
@@ -98,23 +114,6 @@ export const makeFakeComments = () =>
       } as Comment)
   );
 
-export const makeFakeGenre = (): Genre => {
-  const genres: Genre[] = [
-    Genre.Action,
-    Genre.Adventure,
-    Genre.All,
-    Genre.Comedie,
-    Genre.Crime,
-    Genre.Documentary,
-    Genre.Drama,
-    Genre.Fantasy,
-    Genre.Horror,
-    Genre.KidsFamily,
-    Genre.Romance,
-    Genre.SciFi,
-  ];
-  return genres.at(getRandom(0, genres.length - 1)) || Genre.All;
-};
 export const makeFakeStore = (initialState?: Partial<State>): State => ({
   USER: { authorizationStatus: AuthorizationStatus.NoAuth },
   DATA: {

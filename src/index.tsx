@@ -11,7 +11,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ToastContainer } from 'react-toastify';
 import React from 'react';
 import { checkAuthAction } from './store/api-actions';
-import { BrowserRouter } from 'react-router-dom';
 import HistoryRouter from './components/history-route/history-route';
 import browserHistory from './browser-history';
 store.dispatch(checkAuthAction());
@@ -33,6 +32,5 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
 
 

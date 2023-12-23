@@ -15,18 +15,14 @@ export function TabReviews({ film, comments }: TabReviewsProps): JSX.Element {
         {comments
           .slice(0, Math.trunc((rewievsCount + 1) / 2))
           .map((comment) => (
-            <div data-testid="review-one-col">
-              <ReviewCard key={film.id} rewiev={comment} />
-            </div>
+            <ReviewCard key={film.id} rewiev={comment} />
           ))}
       </div>
       <div className="film-card__reviews-col">
         {comments
           .slice(Math.trunc((rewievsCount + 1) / 2), rewievsCount)
           .map((comment) => (
-            <div data-testid="review-two-col">
-              <ReviewCard key={film.id} rewiev={comment} />
-            </div>
+            <ReviewCard key={film.id} rewiev={comment} />
           ))}
       </div>
     </div>

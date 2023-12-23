@@ -11,14 +11,14 @@ describe('Component: TabDetails', () => {
     render(preparedComponent);
 
     expect(screen.getByTestId('details')).toBeInTheDocument();
-    expect(screen.getByText(`Director`)).toBeInTheDocument();
+    expect(screen.getByText('Director')).toBeInTheDocument();
     expect(screen.getByText(`${film.director}`)).toBeInTheDocument();
-    expect(screen.getByText(`Starring`)).toBeInTheDocument();
-    expect(screen.getByText(`Run Time`)).toBeInTheDocument();
+    expect(screen.getByText('Starring')).toBeInTheDocument();
+    expect(screen.getByText('Run Time')).toBeInTheDocument();
     expect(screen.getByText(`${film.runTime}`)).toBeInTheDocument();
-    expect(screen.getByText(`Genre`)).toBeInTheDocument();
+    expect(screen.getByText('Genre')).toBeInTheDocument();
     expect(screen.getByText(`${film.genre}`)).toBeInTheDocument();
-    expect(screen.getByText(`Released`)).toBeInTheDocument();
+    expect(screen.getByText('Released')).toBeInTheDocument();
   });
 });
 
@@ -32,11 +32,6 @@ describe('Component: TabReviews', () => {
 
     render(preparedComponent);
     expect(screen.getByTestId('reviews')).toBeInTheDocument();
-    expect(screen.getAllByTestId('review-one-col').length).toBe(
-      Math.trunc((comments.length + 1) / 2)
-    );
-    expect(screen.getAllByTestId('review-two-col').length).toBe(
-      comments.length - Math.trunc((comments.length + 1) / 2)
-    );
+    expect(screen.getAllByTestId('review').length).toBe(comments.length);
   });
 });

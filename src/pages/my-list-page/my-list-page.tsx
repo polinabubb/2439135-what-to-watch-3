@@ -5,16 +5,13 @@ import { FilmCards } from '../../components/film-cards/film-cards';
 import { UserBlock } from '../../components/user-block/user-block.tsx';
 import { getUserFilms } from '../../store/film-data/selectors.ts';
 import { useAppSelector, useAppDispatch } from '../../hooks';
-import { FilmType } from '../../types/films';
 import { fetchUserListAction } from '../../store/api-actions.ts';
 import { useEffect } from 'react';
 type MyListPageProps = {
   authorizationStatus: AuthorizationStatus;
-  userFilms: FilmType[];
 };
 function MyListPage({
   authorizationStatus,
-  userFilms,
 }: MyListPageProps): JSX.Element {
   const films = useAppSelector(getUserFilms);
   const dispatch = useAppDispatch();

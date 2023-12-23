@@ -12,11 +12,10 @@ import {
 import { useEffect } from 'react';
 import { NotFoundPage } from '../not-found-page/not-found-page';
 import { ResetMovieSettings } from './reset-movie-settings';
-import { FilmType } from '../../types/films';
 import { AuthorizationStatus } from '../../const';
 import { UserBlock } from '../../components/user-block/user-block.tsx';
 type MoviePageProps = {
-  authorizationStatus: AuthorizationStatus; userFilms: FilmType[];
+  authorizationStatus: AuthorizationStatus;
 };
 import {
   getFilm,

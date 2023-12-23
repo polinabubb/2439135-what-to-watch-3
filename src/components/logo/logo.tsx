@@ -5,9 +5,9 @@ export function Logo(): JSX.Element {
     <div className="logo" data-testid="logo">
       <Link to="/" className="logo__link">
         {['W', 'T', 'W'].map((ch, index) =>
-        (
-          <span className={`logo__letter logo__letter--${index + 1}`}  data-testid="letter" key={`${index}`}>{ch} </span>
-        ))}
+          (
+            <span className={`logo__letter logo__letter--${index + 1}`} data-testid="letter" key={`${ch}`}>{ch} </span>
+          ))}
 
       </Link>
     </div>

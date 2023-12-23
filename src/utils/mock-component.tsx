@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 import { Action } from 'redux';
 import { AppThunkDispatch } from './mocks';
 import { Provider } from 'react-redux';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
 
 export function withHistory(component: JSX.Element, history?: MemoryHistory) {

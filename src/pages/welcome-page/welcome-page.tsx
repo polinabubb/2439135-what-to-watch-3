@@ -20,7 +20,6 @@ import { AddToFavorite } from '../../components/add-to-favorite/add-to-favorite.
 type WelcomePageProps = {
   promoFilm: FilmType | null;
   authorizationStatus: AuthorizationStatus;
-  userFilms: FilmType[];
 };
 
 function WelcomePage({
