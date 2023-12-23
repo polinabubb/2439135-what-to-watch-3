@@ -51,7 +51,7 @@ function PlayerPage(): JSX.Element {
   const formatTime = () => {
     const padStart = (time: number) => `${Math.floor(time)}`.padStart(2, '0');
     const hours = padStart(currentTime / 360);
-    const minutes = padStart(currentTime / 60 - Number.parseInt(hours) * 60);
+    const minutes = padStart(currentTime / 60 - Number.parseInt(hours, 10) * 60);
     const seconds = padStart(currentTime % 60);
     const minuteSection = `-${minutes}:${seconds}`;
     const hourSection = `-${hours}:${minutes}:${seconds}`;

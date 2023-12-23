@@ -4,7 +4,7 @@ import PlayButton from './play-button';
 describe('Component: PlayButton', () => {
   it('should render correct', () => {
     const playButtonProps = {
-      onClickHandler: () => {},
+      onClickHandler: () => undefined,
       isPlaying: true,
     };
     render(<PlayButton {...playButtonProps} />);
