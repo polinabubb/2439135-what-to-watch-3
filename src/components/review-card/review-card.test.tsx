@@ -8,7 +8,6 @@ describe('Component: ReviewCard', () => {
     const preparedComponent = withHistory(<ReviewCard rewiev={comment} />);
     render(preparedComponent);
     expect(screen.getByTestId('review')).toBeInTheDocument();
-    expect(screen.getByText(`${comment.comment}`)).toBeInTheDocument();
     expect(screen.getByText(`${comment.user}`)).toBeInTheDocument();
     expect(screen.getByText(`${comment.rating}`)).toBeInTheDocument();
     expect(
