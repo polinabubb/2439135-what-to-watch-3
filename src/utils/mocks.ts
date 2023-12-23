@@ -1,8 +1,8 @@
 import {} from '../const';
-import { FilmType, FilmCardType, PromoFilmType } from '../types/films';
+import { FilmType, FilmCardType } from '../types/films';
 import { Comment } from '../types/reviews';
 import { State } from '../types/state';
-import { datatype, date, image, internet, lorem, music, name } from 'faker';
+import { datatype, date, image, internet, lorem, name } from 'faker';
 import { ThunkDispatch } from 'redux-thunk';
 import { createAPI } from '../services/api';
 import { Action } from 'redux';
@@ -115,3 +115,29 @@ export const makeFakeGenre = (): Genre => {
   ];
   return genres.at(getRandom(0, genres.length - 1)) || Genre.All;
 };
+export const makeFakeStore = (initialState?: Partial<State>): State => ({
+  USER: { authorizationStatus: AuthorizationStatus.NoAuth },
+  DATA: {
+    genre: Genre.All,
+    films: [],
+    filmsDisplayed: [],
+    similarFilmsDisplayed: [],
+    filmsByGenre: [],
+    genreFilmsCount: 8,
+    similarFilmsCount: 8,
+    promoFilm: null,
+    film: null,
+    similarFilms: [],
+    comments: [],
+    userListFilms: [],
+    isFilmsLoading: false,
+    isSimilarFilmsLoading: false,
+    isUserFilmsLoading: false,
+    isPromoFilmLoading: false,
+    isCommentsLoading: false,
+    isFilmLoading: false,
+    isCommentSend: false,
+    hasError: false,
+  },
+  ...(initialState ?? {}),
+});

@@ -34,6 +34,7 @@ export function FilmCard({ film }: FilmCardProps): JSX.Element {
   };
   return (
     <Link
+      data-testid="film-card"
       className="small-film-card__link small-film-card catalog__films-card"
       to={`/films/${film.id}`}
       onMouseEnter={handleMouseEnter}

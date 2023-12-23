@@ -1,5 +1,5 @@
 import { MemoryHistory, createMemoryHistory } from 'history';
-
+import HistoryRouter from '../components/history-route/history-route';
 import { HelmetProvider } from 'react-helmet-async';
 import { MockStore, configureMockStore } from '@jedmao/redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
@@ -10,12 +10,17 @@ import { Action } from 'redux';
 import { AppThunkDispatch } from './mocks';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-export function withHistory(component: JSX.Element) {
+
+
+export function withHistory(component: JSX.Element, history?: MemoryHistory) {
+  const memoryHistory = history ?? createMemoryHistory();
+
   return (
-    <HelmetProvider>
-      {' '}
-      <BrowserRouter>{component}</BrowserRouter>
-    </HelmetProvider>
+    <HistoryRouter history={memoryHistory}>
+      <HelmetProvider>
+        {component}
+      </HelmetProvider>
+    </HistoryRouter>
   );
 }
 

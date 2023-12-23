@@ -12,6 +12,8 @@ import { ToastContainer } from 'react-toastify';
 import React from 'react';
 import { checkAuthAction } from './store/api-actions';
 import { BrowserRouter } from 'react-router-dom';
+import HistoryRouter from './components/history-route/history-route';
+import browserHistory from './browser-history';
 store.dispatch(checkAuthAction());
 store.dispatch(fetchFilmsAction());
 store.dispatch(fetchPromoFilmAction());
@@ -23,9 +25,14 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <HelmetProvider>
-        <ToastContainer />
-        <App />
+        <HistoryRouter history={browserHistory}>
+          <ToastContainer />
+          <App />
+        </HistoryRouter>
       </HelmetProvider>
     </Provider>
   </React.StrictMode>
 );
+
+
+

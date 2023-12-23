@@ -5,7 +5,7 @@ import { FilmCards } from '../../components/film-cards/film-cards';
 import { UserBlock } from '../../components/user-block/user-block.tsx';
 import { getUserFilms } from '../../store/film-data/selectors.ts';
 import { useAppSelector, useAppDispatch } from '../../hooks';
-import { FilmType, PromoFilmType } from '../../types/films';
+import { FilmType } from '../../types/films';
 import { fetchUserListAction } from '../../store/api-actions.ts';
 import { useEffect } from 'react';
 type MyListPageProps = {
