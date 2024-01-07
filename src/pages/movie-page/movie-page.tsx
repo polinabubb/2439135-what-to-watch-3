@@ -22,6 +22,9 @@ import {
   getSimilarFilmsDisplayed,
   getSimilarFilms,
   getComments,
+  getFilmDataLoadingStatus,
+  getSimilarFilmsDataLoadingStatus,
+  getCommentsDataLoadingStatus,
 } from '../../store/film-data/selectors.ts';
 import { AddToFavorite } from '../../components/add-to-favorite/add-to-favorite.tsx';
 import {
@@ -30,6 +33,8 @@ import {
 } from '../../store/film-data/film-data.ts';
 import { Helmet } from 'react-helmet-async';
 import { resetSimilarFilmsCount } from '../../store/film-data/film-data';
+import { Spinner } from '../../components/spinner/spinner.tsx';
+
 function MoviePage({ authorizationStatus }: MoviePageProps): JSX.Element {
   const { id } = useParams();
   const dispatch = useAppDispatch();
@@ -37,6 +42,11 @@ function MoviePage({ authorizationStatus }: MoviePageProps): JSX.Element {
   const similarFilms = useAppSelector(getSimilarFilms);
   const similarDisplayedFilms = useAppSelector(getSimilarFilmsDisplayed);
   const comments = useAppSelector(getComments);
+  const isFilmDataLoading = useAppSelector(getFilmDataLoadingStatus);
+  const isSimilarFilmsDataLoading = useAppSelector(
+    getSimilarFilmsDataLoadingStatus
+  );
+  const isCommentsDataLoading = useAppSelector(getCommentsDataLoadingStatus);
   useEffect(() => {
     if (id) {
       dispatch(fetchFilmAction(id));
@@ -49,9 +59,13 @@ function MoviePage({ authorizationStatus }: MoviePageProps): JSX.Element {
   if (!mainFilm) {
     return <NotFoundPage />;
   }
+
+  if (isFilmDataLoading || isSimilarFilmsDataLoading || isCommentsDataLoading) {
+    return <Spinner />;
+  }
+
   return (
     <>
-      {' '}
       <Helmet>
         <title>{`What to watch. Preview: ${mainFilm.name}`}</title>
       </Helmet>

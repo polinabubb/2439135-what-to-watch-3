@@ -10,22 +10,13 @@ import PlayerPage from '../../pages/player-page/player-page.tsx';
 import NotFoundScreen from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
-import Loading from '../../components/loading/loading';
 import { getAuthorizationStatus } from '../../store/user-process/selectors.ts';
-import {
-  getFilmsDataLoadingStatus,
-  getPromoFilm,
-} from '../../store/film-data/selectors.ts';
+import { getPromoFilm } from '../../store/film-data/selectors.ts';
 
 function App(): JSX.Element {
-  const isFilmsDataLoading = useAppSelector(getFilmsDataLoadingStatus);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   const promoFilm = useAppSelector(getPromoFilm);
-
-  if (isFilmsDataLoading) {
-    return <Loading />;
-  }
 
   return (
     <HelmetProvider>

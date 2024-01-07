@@ -9,6 +9,8 @@ import {
   getFilmsCount,
   getFilmsByGenre,
   getFilmsDisplayed,
+  getFilmsDataLoadingStatus,
+  getPromoFilmDataLoadingStatus,
 } from '../../store/film-data/selectors.ts';
 import {
   increaseFilmsCount,
@@ -16,7 +18,7 @@ import {
 } from '../../store/film-data/film-data.ts';
 import { Link } from 'react-router-dom';
 import { AddToFavorite } from '../../components/add-to-favorite/add-to-favorite.tsx';
-
+import { Spinner } from '../../components/spinner/spinner.tsx';
 type WelcomePageProps = {
   promoFilm: FilmType | null;
   authorizationStatus: AuthorizationStatus;
@@ -30,7 +32,11 @@ function MainPage({
   const countDisplayedFilms = useAppSelector(getFilmsCount);
   const filmsByGenre = useAppSelector(getFilmsByGenre);
   const films = useAppSelector(getFilmsDisplayed);
-
+  const isFilmsDataLoading = useAppSelector(getFilmsDataLoadingStatus);
+  const isPromoFilmDataLoading = useAppSelector(getPromoFilmDataLoadingStatus);
+  if (isFilmsDataLoading || isPromoFilmDataLoading) {
+    return <Spinner />;
+  }
   return (
     <>
       <Helmet>

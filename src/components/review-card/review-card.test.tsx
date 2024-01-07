@@ -5,7 +5,7 @@ import { makeFakeComments } from '../../utils/mocks';
 describe('Component: ReviewCard', () => {
   it('should render correct', () => {
     const comment = makeFakeComments()[0];
-    const preparedComponent = withHistory(<ReviewCard rewiev={comment} />);
+    const preparedComponent = withHistory(<ReviewCard review={comment} />);
     render(preparedComponent);
     expect(screen.getByTestId('review')).toBeInTheDocument();
     expect(screen.getByText(`${comment.user}`)).toBeInTheDocument();

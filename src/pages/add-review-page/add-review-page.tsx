@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { AddReviewForm } from '../../components/add-review-form/add-review-form';
-import { Logo } from '../../components/logo/logo';
 import { useAppSelector } from '../../hooks/index';
 import { getFilm } from '../../store/film-data/selectors';
 import { Helmet } from 'react-helmet-async';
@@ -21,7 +20,19 @@ function AddReviewPage(): JSX.Element {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header">
-          <Logo />
+          <div className="logo" data-testid="logo">
+            <Link to="/" className="logo__link">
+              {['W', 'T', 'W'].map((ch, index) => (
+                <span
+                  className={`logo__letter logo__letter--${index + 1}`}
+                  data-testid="letter"
+                  key={`${ch}`}
+                >
+                  {ch}{' '}
+                </span>
+              ))}
+            </Link>
+          </div>
 
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">

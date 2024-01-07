@@ -1,22 +1,30 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { FilmCards } from '../../components/film-cards/film-cards';
-//import { useAppSelector } from '../../hooks';
 import { UserBlock } from '../../components/user-block/user-block.tsx';
-import { getUserFilms } from '../../store/film-data/selectors.ts';
+import {
+  getUserFilms,
+  getUserFilmsDataLoadingStatus,
+} from '../../store/film-data/selectors.ts';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { fetchUserListAction } from '../../store/api-actions.ts';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Spinner } from '../../components/spinner/spinner.tsx';
 type MyListPageProps = {
   authorizationStatus: AuthorizationStatus;
 };
 function MyListPage({ authorizationStatus }: MyListPageProps): JSX.Element {
   const films = useAppSelector(getUserFilms);
+  const isUserFilmsDataLoading = useAppSelector(getUserFilmsDataLoadingStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchUserListAction());
   }, [dispatch]);
+
+  if (isUserFilmsDataLoading) {
+    return <Spinner />;
+  }
   return (
     <div className="user-page">
       <Helmet>
