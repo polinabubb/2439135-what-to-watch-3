@@ -4,10 +4,15 @@ import { AddReviewForm } from '../../components/add-review-form/add-review-form'
 import { Logo } from '../../components/logo/logo';
 import { useAppSelector } from '../../hooks/index';
 import { getFilm } from '../../store/film-data/selectors';
+import { Helmet } from 'react-helmet-async';
+
 function AddReviewPage(): JSX.Element {
   const film = useAppSelector(getFilm);
   return (
     <section className="film-card film-card--full">
+      <Helmet>
+        <title>What to watch. Add Review</title>
+      </Helmet>
       <div className="film-card__header">
         <div className="film-card__bg">
           <img src={film?.backgroundImage} alt={film?.name} />

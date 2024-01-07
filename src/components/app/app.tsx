@@ -1,4 +1,4 @@
-import WelcomePage from '../../pages/welcome-page/welcome-page';
+import MainPage from '../../pages/main-page/main-page.tsx';
 import { Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute } from '../../const';
@@ -16,6 +16,7 @@ import {
   getFilmsDataLoadingStatus,
   getPromoFilm,
 } from '../../store/film-data/selectors.ts';
+
 function App(): JSX.Element {
   const isFilmsDataLoading = useAppSelector(getFilmsDataLoadingStatus);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
@@ -28,13 +29,11 @@ function App(): JSX.Element {
 
   return (
     <HelmetProvider>
-
-
       <Routes>
         <Route
           path={AppRoute.Main}
           element={
-            <WelcomePage
+            <MainPage
               promoFilm={promoFilm}
               authorizationStatus={authorizationStatus}
             />
@@ -45,19 +44,13 @@ function App(): JSX.Element {
           path={AppRoute.MyList}
           element={
             <PrivateRoute authorizationStatus={authorizationStatus}>
-              <MyListPage
-                authorizationStatus={authorizationStatus}
-              />
+              <MyListPage authorizationStatus={authorizationStatus} />
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Film}
-          element={
-            <MoviePage
-              authorizationStatus={authorizationStatus}
-            />
-          }
+          element={<MoviePage authorizationStatus={authorizationStatus} />}
         />
         <Route
           path={AppRoute.AddReview}
@@ -70,7 +63,6 @@ function App(): JSX.Element {
         <Route path={AppRoute.Player} element={<PlayerPage />} />
         <Route path="*" element={<NotFoundScreen />} />
       </Routes>{' '}
-
     </HelmetProvider>
   );
 }

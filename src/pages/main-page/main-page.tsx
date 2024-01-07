@@ -1,10 +1,10 @@
-import { FilmCards } from '../../components/film-cards/film-cards';
-import { FilmType } from '../../types/films';
-import { useAppSelector, useAppDispatch } from '../../hooks';
+import { FilmCards } from '../../components/film-cards/film-cards.tsx';
+import { FilmType } from '../../types/films.ts';
+import { useAppSelector, useAppDispatch } from '../../hooks/index.ts';
 import { GenresList } from '../../components/genres-list/genres-list.tsx';
-import { AuthorizationStatus } from '../../const';
+import { AuthorizationStatus } from '../../const.ts';
 import { UserBlock } from '../../components/user-block/user-block.tsx';
-
+import { Helmet } from 'react-helmet-async';
 import {
   getFilmsCount,
   getFilmsByGenre,
@@ -22,7 +22,7 @@ type WelcomePageProps = {
   authorizationStatus: AuthorizationStatus;
 };
 
-function WelcomePage({
+function MainPage({
   promoFilm,
   authorizationStatus,
 }: WelcomePageProps): JSX.Element {
@@ -31,9 +31,11 @@ function WelcomePage({
   const filmsByGenre = useAppSelector(getFilmsByGenre);
   const films = useAppSelector(getFilmsDisplayed);
 
-
   return (
     <>
+      <Helmet>
+        <title>What to watch. Main page</title>
+      </Helmet>
       <section className="film-card">
         <div className="film-card__bg">
           <img src={promoFilm?.backgroundImage} alt={promoFilm?.name} />
@@ -135,4 +137,4 @@ function WelcomePage({
   );
 }
 
-export default WelcomePage;
+export default MainPage;

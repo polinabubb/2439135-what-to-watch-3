@@ -5,6 +5,7 @@ import { getFilm } from '../../store/film-data/selectors.ts';
 import { fetchFilmAction } from '../../store/api-actions.ts';
 import { PlayButton } from '../../components/player-button/play-button.tsx';
 import { ExitButton } from '../../components/player-button/exit-button.tsx';
+import { Helmet } from 'react-helmet-async';
 function PlayerPage(): JSX.Element {
   const { id } = useParams();
   const dispatch = useAppDispatch();
@@ -51,7 +52,9 @@ function PlayerPage(): JSX.Element {
   const formatTime = () => {
     const padStart = (time: number) => `${Math.floor(time)}`.padStart(2, '0');
     const hours = padStart(currentTime / 360);
-    const minutes = padStart(currentTime / 60 - Number.parseInt(hours, 10) * 60);
+    const minutes = padStart(
+      currentTime / 60 - Number.parseInt(hours, 10) * 60
+    );
     const seconds = padStart(currentTime % 60);
     const minuteSection = `-${minutes}:${seconds}`;
     const hourSection = `-${hours}:${minutes}:${seconds}`;
@@ -74,15 +77,18 @@ function PlayerPage(): JSX.Element {
 
   return (
     <div className="player">
-      <video data-testid="video"
+      <Helmet>
+        <title>{`What to watch. Movie: ${film?.name}`}</title>
+      </Helmet>
+      <video
+        data-testid="video"
         src={film?.videoLink}
         className="player__video"
         poster={film?.backgroundImage}
         ref={videoRef}
         muted={false}
         onTimeUpdate={handleUpdateProgress}
-      >
-      </video>
+      ></video>
 
       <ExitButton />
 
@@ -94,8 +100,7 @@ function PlayerPage(): JSX.Element {
               value={videoRef.current?.currentTime}
               max={videoRef.current?.duration}
               ref={progressRef}
-            >
-            </progress>
+            ></progress>
             <div
               className="player__toggler"
               style={{ left: `${playingProgress}%` }}

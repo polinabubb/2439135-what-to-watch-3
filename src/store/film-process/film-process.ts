@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const.ts';
 import { FilmProcess } from '../../types/state.ts';
 import {fetchFilmAction, fetchCommentsAction, addFilmInFavorite} from '../api-actions.ts';
-export const InitialNumberFilms = 8;
 
 const initialState: FilmProcess = {
   film: null,

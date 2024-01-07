@@ -11,7 +11,7 @@ import {
 } from '../../store/api-actions';
 import { useEffect } from 'react';
 import { NotFoundPage } from '../not-found-page/not-found-page';
-import { ResetMovieSettings } from './reset-movie-settings';
+import { ResetMovieSettings } from './functions.ts';
 import { AuthorizationStatus } from '../../const';
 import { UserBlock } from '../../components/user-block/user-block.tsx';
 type MoviePageProps = {
@@ -19,29 +19,30 @@ type MoviePageProps = {
 };
 import {
   getFilm,
+  getSimilarFilmsDisplayed,
   getSimilarFilms,
   getComments,
-  getSimilarFilmsCount,
 } from '../../store/film-data/selectors.ts';
-import {AddToFavorite} from '../../components/add-to-favorite/add-to-favorite.tsx';
+import { AddToFavorite } from '../../components/add-to-favorite/add-to-favorite.tsx';
 import {
   setSimilarFilmsDisplayed,
   increaseSimilarFilmsCount,
 } from '../../store/film-data/film-data.ts';
+import { Helmet } from 'react-helmet-async';
+import { resetSimilarFilmsCount } from '../../store/film-data/film-data';
 function MoviePage({ authorizationStatus }: MoviePageProps): JSX.Element {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const mainFilm = useAppSelector(getFilm);
   const similarFilms = useAppSelector(getSimilarFilms);
+  const similarDisplayedFilms = useAppSelector(getSimilarFilmsDisplayed);
   const comments = useAppSelector(getComments);
-  const countDisplayedFilms = useAppSelector(getSimilarFilmsCount);
-
-
   useEffect(() => {
     if (id) {
       dispatch(fetchFilmAction(id));
       dispatch(fetchCommentsAction(id));
       dispatch(fetchSimilarFilmsAction(id));
+      dispatch(resetSimilarFilmsCount());
     }
   }, [dispatch, id]);
 
@@ -50,6 +51,10 @@ function MoviePage({ authorizationStatus }: MoviePageProps): JSX.Element {
   }
   return (
     <>
+      {' '}
+      <Helmet>
+        <title>{`What to watch. Preview: ${mainFilm.name}`}</title>
+      </Helmet>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
@@ -95,7 +100,11 @@ function MoviePage({ authorizationStatus }: MoviePageProps): JSX.Element {
                   </svg>
                   <span>Play</span>
                 </Link>
-                <AddToFavorite authorizationStatus={authorizationStatus} id={mainFilm.id} isFavorite={mainFilm.isFavorite}/>
+                <AddToFavorite
+                  authorizationStatus={authorizationStatus}
+                  id={mainFilm.id}
+                  isFavorite={mainFilm.isFavorite}
+                />
                 {authorizationStatus === AuthorizationStatus.Auth && (
                   <Link
                     to={AppRoute.AddReview}
@@ -124,13 +133,12 @@ function MoviePage({ authorizationStatus }: MoviePageProps): JSX.Element {
           </div>
         </div>
       </section>
-
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmCards films={similarFilms} />
-          {countDisplayedFilms < similarFilms.length && (
+          <FilmCards films={similarDisplayedFilms} />
+          {similarDisplayedFilms.length < similarFilms.length && (
             <div className="catalog__more">
               <button
                 className="catalog__button"

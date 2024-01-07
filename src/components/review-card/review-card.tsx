@@ -4,14 +4,20 @@ type RewievProps = {
 };
 
 export function ReviewCard({ rewiev }: RewievProps): JSX.Element {
+  const d = new Date(rewiev.date);
+  const locale = 'en-us';
+  const date = `${d.toLocaleString(locale, {
+    month: 'long',
+  })} ${d.getDate()}, ${d.getFullYear()}`;
+
   return (
     <div className="review" data-testid="review">
       <blockquote className="review__quote">
         <p className="review__text">{rewiev.comment}</p>
         <footer className="review__details">
           <cite className="review__author">{rewiev.user}</cite>
-          <time className="review__date" dateTime={rewiev.date.split('T')[0]}>
-            {rewiev.date.split('T')[0]}
+          <time className="review__date" dateTime={date}>
+            {date}
           </time>
         </footer>
       </blockquote>

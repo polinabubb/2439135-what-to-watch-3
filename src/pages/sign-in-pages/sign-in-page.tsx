@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import { Helmet } from 'react-helmet-async';
 function SignInPage(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
@@ -31,6 +32,9 @@ function SignInPage(): JSX.Element {
 
   return (
     <div className="user-page">
+      <Helmet>
+        <title>What to watch. Sign in</title>
+      </Helmet>
       <header className="page-header user-page__head">
         <div className="logo">
           <Link to={AppRoute.Main} className="logo__link">

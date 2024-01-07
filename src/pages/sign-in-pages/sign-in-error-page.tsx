@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-
+import { Helmet } from 'react-helmet-async';
 function SignInErrorPage(): JSX.Element {
   return (
     <div className="user-page">
+      <Helmet>
+        <title>What to watch. Sign in</title>
+      </Helmet>
       <header className="page-header user-page__head">
         <div className="logo">
           <Link to={AppRoute.Main} className="logo__link">
