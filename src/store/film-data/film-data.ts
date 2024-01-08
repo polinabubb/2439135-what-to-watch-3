@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Genre, NameSpace } from '../../const.ts';
+import { AuthorizationStatus, Genre, NameSpace } from '../../const.ts';
 import { FilmData } from '../../types/state.ts';
 import { PayloadAction } from '@reduxjs/toolkit';
 import {
@@ -10,9 +10,9 @@ import {
   fetchPromoFilmAction,
   fetchSimilarFilmsAction,
   fetchUserListAction,
-
 } from '../api-actions.ts';
-
+import {getAuthorizationStatus} from '../user-process/selectors.ts'
+import { useAppSelector } from '../../hooks/index.ts';
 const initialState: FilmData = {
   genre: Genre.All,
   films: [],
@@ -92,6 +92,7 @@ export const filmData = createSlice({
     builder
       .addCase(fetchFilmsAction.pending, (state) => {
         state.isFilmsLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchFilmsAction.fulfilled, (state, action) => {
         const films = action.payload;
@@ -102,10 +103,12 @@ export const filmData = createSlice({
       })
       .addCase(fetchFilmsAction.rejected, (state) => {
         state.isFilmsLoading = false;
+        alert('fetchFilmsAction');
         state.hasError = true;
       })
       .addCase(fetchFilmAction.pending, (state) => {
         state.isFilmLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchFilmAction.fulfilled, (state, action) => {
         state.film = action.payload;
@@ -114,9 +117,11 @@ export const filmData = createSlice({
       .addCase(fetchFilmAction.rejected, (state) => {
         state.isFilmLoading = false;
         state.hasError = true;
+        alert('fetchFilmAction');
       })
       .addCase(fetchSimilarFilmsAction.pending, (state) => {
         state.isSimilarFilmsLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchSimilarFilmsAction.fulfilled, (state, action) => {
         const films = action.payload;
@@ -127,9 +132,11 @@ export const filmData = createSlice({
       .addCase(fetchSimilarFilmsAction.rejected, (state) => {
         state.isSimilarFilmsLoading = false;
         state.hasError = true;
+        alert('fetchSimilarFilmsAction');
       })
       .addCase(fetchPromoFilmAction.pending, (state) => {
         state.isPromoFilmLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchPromoFilmAction.fulfilled, (state, action) => {
         state.promoFilm = action.payload;
@@ -138,9 +145,11 @@ export const filmData = createSlice({
       .addCase(fetchPromoFilmAction.rejected, (state) => {
         state.isPromoFilmLoading = false;
         state.hasError = true;
+        alert('fetchPromoFilmAction');
       })
       .addCase(fetchCommentsAction.pending, (state) => {
         state.isCommentsLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchCommentsAction.fulfilled, (state, action) => {
         state.comments = action.payload;
@@ -149,14 +158,15 @@ export const filmData = createSlice({
       .addCase(fetchCommentsAction.rejected, (state) => {
         state.isCommentsLoading = false;
         state.hasError = true;
+        alert('fetchCommentsAction');
       })
 
       .addCase(sendCommentAction.pending, (state) => {
         state.isCommentSend = true;
+        state.hasError = false;
       })
       .addCase(sendCommentAction.rejected, (state) => {
         state.isCommentSend = false;
-        state.hasError = true;
       })
       .addCase(sendCommentAction.fulfilled, (state, action) => {
         state.comments = [...state.comments, action.payload];
@@ -164,6 +174,7 @@ export const filmData = createSlice({
       })
       .addCase(fetchUserListAction.pending, (state) => {
         state.isUserFilmsLoading = true;
+        state.hasError = false;
       })
       .addCase(fetchUserListAction.fulfilled, (state, action) => {
         state.userListFilms = action.payload;
@@ -171,7 +182,11 @@ export const filmData = createSlice({
       })
       .addCase(fetchUserListAction.rejected, (state) => {
         state.isUserFilmsLoading = false;
-        state.hasError = true;
+        const authorizationStatus = useAppSelector(getAuthorizationStatus);
+        if (authorizationStatus === AuthorizationStatus.Auth){
+          state.hasError = true;
+          alert('fetchUserListAction');
+        }
       });
   },
 });

@@ -11,13 +11,18 @@ import NotFoundScreen from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
 import { getAuthorizationStatus } from '../../store/user-process/selectors.ts';
-import { getPromoFilm } from '../../store/film-data/selectors.ts';
-
+import {
+  getPromoFilm,
+  getErrorStatus,
+} from '../../store/film-data/selectors.ts';
+import Error from '../error/error.tsx';
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
-
   const promoFilm = useAppSelector(getPromoFilm);
-
+  const hasError = useAppSelector(getErrorStatus);
+  if (hasError) {
+    return <Error />;
+  }
   return (
     <HelmetProvider>
       <Routes>
