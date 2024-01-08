@@ -78,7 +78,7 @@ function PlayerPage(): JSX.Element {
   return (
     <div className="player">
       <Helmet>
-        <title>{`What to watch. Movie: ${film?.name}`}</title>
+        <title>{`What to watch. Movie: ${film?.name || ''}`}</title>
       </Helmet>
       <video
         data-testid="video"
@@ -88,7 +88,8 @@ function PlayerPage(): JSX.Element {
         ref={videoRef}
         muted={false}
         onTimeUpdate={handleUpdateProgress}
-      ></video>
+      >
+      </video>
 
       <ExitButton />
 
@@ -100,7 +101,8 @@ function PlayerPage(): JSX.Element {
               value={videoRef.current?.currentTime}
               max={videoRef.current?.duration}
               ref={progressRef}
-            ></progress>
+            >
+            </progress>
             <div
               className="player__toggler"
               style={{ left: `${playingProgress}%` }}

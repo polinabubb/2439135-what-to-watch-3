@@ -21,7 +21,7 @@ function SignInPage(): JSX.Element {
 
     if (loginRef.current !== null && passwordRef.current !== null) {
       if (
-        passwordRef.current.value.search(/\d/) != -1 &&
+        passwordRef.current.value.search(/\d/) !== -1 &&
         !/^\d+$/.test(passwordRef.current.value)
       ) {
         setIsError(false);

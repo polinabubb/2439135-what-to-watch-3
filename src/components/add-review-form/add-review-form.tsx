@@ -69,7 +69,8 @@ export function AddReviewForm(): JSX.Element {
           placeholder="Review text"
           maxLength={400}
           minLength={50}
-        ></textarea>
+        >
+        </textarea>
         <div className="add-review__submit">
           <button
             className="add-review__btn"
